@@ -272,8 +272,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _levels:
   - SC_00_StartScreen
-  - SC_Level_Test
+  - SC_99_Level_Test
   _scenesFolderPath: Assets/Scenes/Levels
+  _currentLevelIndex: 0
   _onStartLoadingScene:
     m_PersistentCalls:
       m_Calls: []

@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
+        _currentLevelIndex = 0;
     }
 
     public void LoadFirstLevel()
@@ -78,6 +79,7 @@ public class GameManager : MonoBehaviour
         }
 
         EditorBuildSettings.scenes = scenesToBuild.ToArray();
+        EditorUtility.SetDirty(this);
     } 
 #endif
 }

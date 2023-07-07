@@ -9,6 +9,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
+
     [Header("Levels")]
     [SerializeField]
     private string[] _levels;
@@ -21,6 +23,14 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        if(Instance == null)
+            Instance = this;
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         DontDestroyOnLoad(gameObject);
         _currentLevelIndex = 0;
     }
@@ -90,4 +100,9 @@ public class GameManager : MonoBehaviour
         EditorUtility.SetDirty(this);
     } 
 #endif
+
+    public void QuitApp()
+    {
+        Application.Quit();
+    }
 }

@@ -1,6 +1,7 @@
-#if UNITY_EDITOR
 using System.Collections.Generic;
-using UnityEditor; 
+#if UNITY_EDITOR
+using UnityEditor;
+using UnityEditor.SceneManagement;
 #endif
 using UnityEngine;
 using UnityEngine.Events;
@@ -52,16 +53,23 @@ public class GameManager : MonoBehaviour
             levelIndex = _levels.Length - 1;
         }
 
-        _currentLevelIndex = levelIndex;
-        Logger.Log($"Loading level #{_currentLevelIndex}/{_levels.Length}");
+        if (Application.isPlaying)
+        {
+            _currentLevelIndex = levelIndex;
+            Logger.Log($"Loading level #{_currentLevelIndex}/{_levels.Length}");
 
-        _onStartLoadingScene?.Invoke(_currentLevelIndex);
-        var asyncLoadOperation = SceneManager.LoadSceneAsync(_levels[_currentLevelIndex], LoadSceneMode.Single);
-        asyncLoadOperation.completed += (asyncOperation) => _onSceneLoaded?.Invoke(_currentLevelIndex);
+            _onStartLoadingScene?.Invoke(_currentLevelIndex);
+            var asyncLoadOperation = SceneManager.LoadSceneAsync(_levels[_currentLevelIndex], LoadSceneMode.Single);
+            asyncLoadOperation.completed += (asyncOperation) => _onSceneLoaded?.Invoke(_currentLevelIndex);
+        }
+#if UNITY_EDITOR
+        else
+            EditorSceneManager.OpenScene(System.IO.Path.Combine(_scenesFolderPath, _levels[levelIndex]) + ".unity");
+#endif
     }
 
 #if UNITY_EDITOR
-    public void EdtiorRefreshLevelsList()
+    public void EditorRefreshLevelsList()
     {
         List<EditorBuildSettingsScene> scenesToBuild = new List<EditorBuildSettingsScene>();
 

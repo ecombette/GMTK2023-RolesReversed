@@ -20,6 +20,6 @@ public class GameManagerEditor : Editor
         GUILayout.Space(15);
 
         if (GUILayout.Button("Refresh Levels List"))
-            gameManager.EdtiorRefreshLevelsList();
+            gameManager.EditorRefreshLevelsList();
     }
 }

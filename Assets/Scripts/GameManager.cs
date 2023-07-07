@@ -43,15 +43,17 @@ public class GameManager : MonoBehaviour
         if(levelIndex < 0)
         {
             levelIndex = 0;
-            Debug.LogWarning($"Trying to load level with negative index ({levelIndex}), default to 0");
+            Logger.LogWarning($"Trying to load level with negative index ({levelIndex}), default to 0");
         }
         else if(levelIndex >= _levels.Length)
         {
-            Debug.LogWarning($"Trying to load out of bounds level ({levelIndex}), default to last ({_levels.Length - 1})");
+            Logger.LogWarning($"Trying to load out of bounds level ({levelIndex}), default to last ({_levels.Length - 1})");
             levelIndex = _levels.Length - 1;
         }
 
         _currentLevelIndex = levelIndex;
+        Logger.Log($"Loading level #{_currentLevelIndex}/{_levels.Length}");
+
         _onStartLoadingScene?.Invoke(_currentLevelIndex);
         var asyncLoadOperation = SceneManager.LoadSceneAsync(_levels[_currentLevelIndex], LoadSceneMode.Single);
         asyncLoadOperation.completed += (asyncOperation) => _onSceneLoaded?.Invoke(_currentLevelIndex);

@@ -13,11 +13,10 @@ public class GameManager : MonoBehaviour
     private string[] _levels;
     [SerializeField]
     private string _scenesFolderPath = "Assets/Scenes";
-
+    [SerializeField]
+    private int _currentLevelIndex = 0;
     [SerializeField]
     private UnityEvent<int> _onStartLoadingScene, _onSceneLoaded;
-
-    private int _currentLevelIndex = 0;
 
     private void Awake()
     {
@@ -59,7 +58,6 @@ public class GameManager : MonoBehaviour
     }
 
 #if UNITY_EDITOR
-    [ContextMenu("Refresh Levels List")]
     public void EdtiorRefreshLevelsList()
     {
         List<EditorBuildSettingsScene> scenesToBuild = new List<EditorBuildSettingsScene>();

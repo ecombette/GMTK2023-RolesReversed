@@ -11,6 +11,8 @@ public class Node : MonoBehaviour
     private int _nodeCost = 1;
     [SerializeField]
     private List<Node> _neighbours;
+    [SerializeField]
+    private Node[] _directionalNeighbourhood = new Node[(int)Direction.COUNT];
 
     [SerializeField] private float _searchRadius = 1.1f;
 
@@ -19,6 +21,9 @@ public class Node : MonoBehaviour
 
     public int Cost => _nodeCost;
     public ReadOnlyCollection<Node> Neighbours => _neighbours.AsReadOnly();
+
+    public bool HasNeighbour(Direction direction) => _directionalNeighbourhood[(int)direction] != null;
+    public Node GetNeighbour(Direction direction) => _directionalNeighbourhood[(int)direction];
 
     public void SelectNode(bool selected)
     {
@@ -35,6 +40,7 @@ public class Node : MonoBehaviour
     [ContextMenu("Refresh Neighbours")]
     public void EditorRefreshNeighbours()
     {
+        editorClearDirectionalNeighbourhood();
         if (_neighbours == null)
             _neighbours = new List<Node>();
         else
@@ -48,11 +54,36 @@ public class Node : MonoBehaviour
             if(node == this)
                 continue;
 
-            if(Vector3.SqrMagnitude(nodePosition - node.transform.position) <= sqrSearchRadius)
+            var nodesDelta = node.transform.position - nodePosition;
+            if(Vector3.SqrMagnitude(nodesDelta) <= sqrSearchRadius)
+            {
                 _neighbours.Add(node);
+                var horizontalDot = Vector3.Dot(nodesDelta, Vector3.right);
+                var verticalDot = Vector3.Dot(nodesDelta, Vector3.forward);
+                if(Mathf.Abs(verticalDot) > .9f)
+                {
+                    if(verticalDot > 0f)
+                        _directionalNeighbourhood[(int)Direction.UP] = node;
+                    else
+                        _directionalNeighbourhood[(int)Direction.DOWN] = node;
+                }
+                else if(Mathf.Abs(horizontalDot) > .9f)
+                {
+                    if (horizontalDot > 0f)
+                        _directionalNeighbourhood[(int)Direction.RIGHT] = node;
+                    else
+                        _directionalNeighbourhood[(int)Direction.LEFT] = node;
+                }
+            }
         }
 
         UnityEditor.EditorUtility.SetDirty(this);
+    }
+
+    private void editorClearDirectionalNeighbourhood()
+    {
+        for(int i = 0; i < (int)Direction.COUNT; i++)
+            _directionalNeighbourhood[i] = null;
     }
 #endif
 }

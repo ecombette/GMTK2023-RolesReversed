@@ -46,8 +46,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gridReference: {fileID: 11400000, guid: 885bb826d098efe4fb75b19ee05841af, type: 2}
+  _nodeCost: 1
   _neighbours: []
   _meshRenderer: {fileID: 6723013979226254259}
+  _onNodeSelected:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6723013979226254259}
+        m_TargetAssemblyTypeName: UnityEngine.Renderer, UnityEngine
+        m_MethodName: set_material
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2100000, guid: 88faee75ea905a243b56e0693a883632, type: 2}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Material, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _onNodeUnselected:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6723013979226254259}
+        m_TargetAssemblyTypeName: UnityEngine.Renderer, UnityEngine
+        m_MethodName: set_material
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2100000, guid: 49f166beb18cf1a4797fea5e48fd40ff, type: 2}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Material, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &5372060129743517495
 PrefabInstance:
   m_ObjectHideFlags: 0

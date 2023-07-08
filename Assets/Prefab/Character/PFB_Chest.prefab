@@ -63,6 +63,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _movementSpeed: 3
+  _movementCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _rotationCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &7347196903768541828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,6 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetReference: {fileID: 11400000, guid: 1c8bf6a0ad9e5054aa5da0e55563d3f7, type: 2}
+  _gridReference: {fileID: 11400000, guid: 885bb826d098efe4fb75b19ee05841af, type: 2}
 --- !u!1001 &7019725413927287546
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,15 +1,33 @@
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Node : MonoBehaviour
 {
     [SerializeField]
     private GridReference _gridReference;
     [SerializeField]
+    private int _nodeCost = 1;
+    [SerializeField]
     private List<Node> _neighbours;
 
     [SerializeField]
     private MeshRenderer _meshRenderer;
+
+    [SerializeField]
+    private UnityEvent _onNodeSelected, _onNodeUnselected;
+
+    public int Cost => _nodeCost;
+    public ReadOnlyCollection<Node> Neighbours => _neighbours.AsReadOnly();
+
+    public void SelectNode(bool selected)
+    {
+        if (selected)
+            _onNodeSelected?.Invoke();
+        else
+            _onNodeUnselected?.Invoke();
+    }
 
 #if UNITY_EDITOR
     [ContextMenu("Refresh Neighbours")]

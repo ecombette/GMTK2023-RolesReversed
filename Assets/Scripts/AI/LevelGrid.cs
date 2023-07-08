@@ -20,9 +20,24 @@ public class LevelGrid : MonoBehaviour
         }
 
         _gridReference.Init(this);
+        ResetNodesSelection();
     }
 
+    [ContextMenu("Reset Nodes Selection")]
+    public void ResetNodesSelection()
+    {
+        foreach (var node in _nodes)
+            node.SelectNode(false);
+    }
+
+
 #if UNITY_EDITOR
+    [ContextMenu("Init Reference Asset")]
+    public void EditorInitReferenceAsset()
+    {
+        _gridReference.Init(this);
+    }
+
     [ContextMenu("Refresh Child Nodes List")]
     public void EditorRefreshChildNodesList()
     {

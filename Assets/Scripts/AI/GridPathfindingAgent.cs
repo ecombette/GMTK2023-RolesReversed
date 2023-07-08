@@ -87,7 +87,8 @@ public class GridPathfindingAgent : MonoBehaviour
             return transform.position;
         }
 
-        return nextNode.transform.position;
+        _currentNode = nextNode;
+        return _currentNode.transform.position;
     }
 
     private float heuristic(Node nodeA, Node nodeB)

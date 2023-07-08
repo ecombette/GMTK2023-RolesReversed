@@ -28,9 +28,9 @@ public class ChestController : MonoBehaviour
             else if(Mathf.Abs(verticalAxis) >= _inputSensitivity)
             {
                 if (verticalAxis > 0f)
-                    move(Vector3.up);
+                    move(Vector3.forward);
                 else
-                    move(Vector3.down);
+                    move(-Vector3.forward);
 
                 _movementTimer = _movementCooldown;
             }

@@ -7,9 +7,10 @@ public class GoldPileVisual : MonoBehaviour
 {
     [SerializeField] GoldPile _goldPile;
     [Space]
-    [SerializeField, MinMaxSlider(0f,5f)] Vector2 _delayAtStart;
+    [SerializeField, MinMaxSlider(0f, 5f)] Vector2 _delayAtStart;
     [SerializeField] AnimationCurve _emmisiveIntensityAnimationCurve;
     [SerializeField] float _speed = 0.5f;
+    [SerializeField] Material _gold;
     [SerializeField] List<Renderer> _renderers;
     List<Material> _materials;
 
@@ -25,7 +26,8 @@ public class GoldPileVisual : MonoBehaviour
             _materials.Add(_renderers[i].material);
         }
 
-        _goldPile.OnPickedUp += pickUp;
+        if (_goldPile)
+            _goldPile.OnPickedUp += pickUp;
 
         StartCoroutine(animateEmmisive());
 
@@ -39,10 +41,10 @@ public class GoldPileVisual : MonoBehaviour
             {
                 t += Time.deltaTime * _speed;
 
+                Color goldColor = _gold.GetColor("_EmissionColor");
                 for (int i = 0; i < _materials.Count; i++)
                 {
-                    _materials[i].SetVector("_EmissionColor", _materials[i].color * _emmisiveIntensityAnimationCurve.Evaluate(t));
-
+                    _materials[i].SetVector("_EmissionColor", goldColor * _emmisiveIntensityAnimationCurve.Evaluate(t));
                     _renderers[i].material = _materials[i];
                 }
 
@@ -56,7 +58,8 @@ public class GoldPileVisual : MonoBehaviour
 
     private void pickUp()
     {
-        _goldPile.OnPickedUp -= pickUp;
+        if (_goldPile)
+            _goldPile.OnPickedUp -= pickUp;
 
         _goldParticle.SetActive(false);
         _goldParticlePickedUP.Play();

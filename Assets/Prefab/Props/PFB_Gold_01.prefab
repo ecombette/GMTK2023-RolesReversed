@@ -230,22 +230,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _goldPile: {fileID: 7367333399166067681}
-  _delayAtStart: {x: 0.2, y: 3}
+  _delayAtStart: {x: 0.2, y: 1}
   _emmisiveIntensityAnimationCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
+      time: 0.002824843
       value: 0
-      inSlope: 1.5922894
-      outSlope: 1.5922894
+      inSlope: 3.652029
+      outSlope: 3.652029
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.19677015
-      value: 0.31331503
+      time: 0.19959499
+      value: 0.7186103
       inSlope: 0.08725338
       outSlope: 0.08725338
       tangentMode: 0
@@ -253,17 +253,17 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.27941263
     - serializedVersion: 3
-      time: 0.5075629
-      value: 0.071416765
-      inSlope: 0.038306803
-      outSlope: 0.038306803
+      time: 0.49226028
+      value: 0.05949095
+      inSlope: -0.049000025
+      outSlope: -0.049000025
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.79864675
-      value: 0.32027608
+      time: 0.8014716
+      value: 0.72557133
       inSlope: 0.015505418
       outSlope: 0.015505418
       tangentMode: 0
@@ -271,10 +271,10 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.35484
     - serializedVersion: 3
-      time: 1
+      time: 1.0028248
       value: 0
-      inSlope: -1.5906179
-      outSlope: -1.5906179
+      inSlope: -3.6034758
+      outSlope: -3.6034758
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -282,7 +282,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _speed: 0.2
+  _speed: 0.35
+  _gold: {fileID: 2100000, guid: 43e14d26cd3400440b57d46d423eb18d, type: 2}
   _renderers:
   - {fileID: 4337881006824650289}
   - {fileID: 5001831030077950451}

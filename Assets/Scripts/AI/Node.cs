@@ -12,8 +12,10 @@ public class Node : MonoBehaviour
     [SerializeField]
     private List<Node> _neighbours;
 
-    [SerializeField]
-    private MeshRenderer _meshRenderer;
+    //[SerializeField]
+    //private MeshRenderer _meshRenderer;
+
+    [SerializeField] private float _searchRadius = 1.1f;
 
     [SerializeField]
     private UnityEvent _onNodeSelected, _onNodeUnselected;
@@ -38,11 +40,11 @@ public class Node : MonoBehaviour
         else
             _neighbours.Clear();
 
-        var bounds = _meshRenderer.bounds;
-        var boundsCenter = bounds.center;
-        var boundsSize = bounds.size;
-        float searchRadius = Mathf.Max(boundsSize.x, boundsSize.z) + .1f;
-        float sqrSearchRadius = searchRadius * searchRadius;
+        //var bounds = _meshRenderer.bounds;
+        var boundsCenter = transform.position;
+        //var boundsSize = _radius;
+        //float searchRadius = Mathf.Max(boundsSize.x, boundsSize.z) + .1f;
+        float sqrSearchRadius = _searchRadius * _searchRadius;
 
         var gridNodes = _gridReference.Nodes;
         foreach(var node in gridNodes)

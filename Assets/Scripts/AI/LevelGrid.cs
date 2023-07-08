@@ -32,8 +32,8 @@ public class LevelGrid : MonoBehaviour
 
 
 #if UNITY_EDITOR
-    [ContextMenu("Init Reference Asset")]
-    public void EditorInitReferenceAsset()
+    [ContextMenu("Init Grid Reference")]
+    public void InitGridReference()
     {
         _gridReference.Init(this);
     }

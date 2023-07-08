@@ -1,19 +1,37 @@
+using System.Collections;
 using UnityEngine;
 
 public class DoorManager : MonoBehaviour
 {
+    [SerializeField] LevelManager _levelManager;
     [Header("Lock")]
     [SerializeField] GameObject _lock;
     [SerializeField] ParticleSystem _lockParticle;
     [SerializeField] Animator _doorAnimator;
     static int HASH_DOOROPEN = Animator.StringToHash("Open");
 
-    [ContextMenu("Unlock Door")]
-    public void UnlockDoor()
+    private void OnEnable()
     {
-        Logger.Log("Unlocking door");
-        _lock.SetActive(false);
-        _lockParticle.Play(); 
-        _doorAnimator.SetTrigger(HASH_DOOROPEN);
+        _levelManager.OnAllPilesPickedUp.AddListener(unlockDoor);
+    }
+
+    [ContextMenu("Unlock Door")]
+    private void unlockDoor()
+    {
+        StartCoroutine(delayUnlockDoor());
+
+        IEnumerator delayUnlockDoor()
+        {
+            yield return new WaitForSeconds(0.5f);
+            Logger.Log("Unlocking door");
+            _lock.SetActive(false);
+            _lockParticle.Play();
+            _doorAnimator.SetTrigger(HASH_DOOROPEN);
+        }
+    }
+
+    private void OnDisable()
+    {
+        _levelManager.OnAllPilesPickedUp.RemoveListener(unlockDoor);
     }
 }

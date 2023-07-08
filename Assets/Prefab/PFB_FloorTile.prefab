@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2773088100757879785}
-  - component: {fileID: 8401364586946247457}
+  - component: {fileID: 492955094081140482}
   m_Layer: 0
   m_Name: PFB_FloorTile
   m_TagString: Untagged
@@ -33,19 +33,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &8401364586946247457
-BoxCollider:
+--- !u!114 &492955094081140482
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6813551338453889036}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 0.05, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8120245176b6c154bbbd0341ca6440a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gridReference: {fileID: 11400000, guid: 885bb826d098efe4fb75b19ee05841af, type: 2}
+  _neighbours: []
+  _meshRenderer: {fileID: 2852237846144832306}
 --- !u!1001 &3482613557768605622
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -107,6 +109,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a91f61946707413458b204cd39831b4f, type: 3}
+--- !u!23 &2852237846144832306 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: a91f61946707413458b204cd39831b4f, type: 3}
+  m_PrefabInstance: {fileID: 3482613557768605622}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4025659417226422365 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a91f61946707413458b204cd39831b4f, type: 3}

@@ -26,7 +26,10 @@ public class Node : MonoBehaviour
     public void SelectNode(bool selected)
     {
         if (selected)
+        {
+            Logger.Log($"Selecting node {gameObject.name}", gameObject);
             _onNodeSelected?.Invoke();
+        }
         else
             _onNodeUnselected?.Invoke();
     }

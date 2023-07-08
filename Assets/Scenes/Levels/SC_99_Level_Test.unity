@@ -353,7 +353,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8127376449662529810, guid: 25fd490806d912445a11c5accaa6ac40, type: 3}
       propertyPath: m_RootOrder
-      value: 20
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 8127376449662529810, guid: 25fd490806d912445a11c5accaa6ac40, type: 3}
       propertyPath: m_LocalPosition.x
@@ -818,7 +818,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 9c8b3f9725e74714f9d3e4e182c78aa9, type: 2}
     - target: {fileID: 164665608272143055, guid: 6a22df5b1152c1a4297546fe3ef2c3e2, type: 3}
       propertyPath: m_RootOrder
-      value: 23
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 164665608272143055, guid: 6a22df5b1152c1a4297546fe3ef2c3e2, type: 3}
       propertyPath: m_LocalScale.x
@@ -2271,21 +2271,9 @@ MonoBehaviour:
   _gameManager: {fileID: 679642863}
   _goldPiles:
   - {fileID: 8151325224283007061}
-  _onAllPilesPickedUp:
+  OnAllPilesPickedUp:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7639816034039796488}
-        m_TargetAssemblyTypeName: DoorManager, Assembly-CSharp
-        m_MethodName: UnlockDoor
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!4 &1336936952
 Transform:
   m_ObjectHideFlags: 0
@@ -3276,7 +3264,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 164665608272143055, guid: 6a22df5b1152c1a4297546fe3ef2c3e2, type: 3}
       propertyPath: m_RootOrder
-      value: 22
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 164665608272143055, guid: 6a22df5b1152c1a4297546fe3ef2c3e2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3645,7 +3633,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7019725412394063861, guid: d266a785125f281459f9459a6685b629, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.185
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7019725412394063861, guid: d266a785125f281459f9459a6685b629, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3696,9 +3684,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1336936952}
     m_Modifications:
+    - target: {fileID: 1011905358905766688, guid: c73c983fe88139b49a9b110657d0289a, type: 3}
+      propertyPath: _levelManager
+      value: 
+      objectReference: {fileID: 1336936951}
     - target: {fileID: 2715068449022116171, guid: c73c983fe88139b49a9b110657d0289a, type: 3}
       propertyPath: m_RootOrder
-      value: 21
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2715068449022116171, guid: c73c983fe88139b49a9b110657d0289a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3746,17 +3738,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c73c983fe88139b49a9b110657d0289a, type: 3}
---- !u!114 &7639816034039796488 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1011905358905766688, guid: c73c983fe88139b49a9b110657d0289a, type: 3}
-  m_PrefabInstance: {fileID: 7639816034039796487}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0f04c1be417f0f4abb171cb78d8b7f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &8151325224283007060
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3766,7 +3747,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 394968453964344922, guid: 7287939ababc2344e8affe1528c68ad7, type: 3}
       propertyPath: m_RootOrder
-      value: 19
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 394968453964344922, guid: 7287939ababc2344e8affe1528c68ad7, type: 3}
       propertyPath: m_LocalPosition.x

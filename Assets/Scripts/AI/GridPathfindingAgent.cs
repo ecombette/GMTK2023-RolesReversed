@@ -127,8 +127,8 @@ public class GridPathfindingAgent : MonoBehaviour
         Node nextNode = null;
         while (_currentPath.TryGetValue(currentDisplayNode, out nextNode))
         {
-            currentDisplayNode.SelectNode(true);
             currentDisplayNode = nextNode;
+            currentDisplayNode.SelectNode(true);
 
             if (currentDisplayNode == _currentNode)
             {

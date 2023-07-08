@@ -9,7 +9,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance;
+    private static GameManager instance = null;
+    public static GameManager Instance => instance;
 
     [Header("Levels")]
     [SerializeField]
@@ -23,16 +24,22 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if(Instance == null)
-            Instance = this;
+        if(instance == null)
+            instance = this;
         else
         {
+            Logger.LogError("A game manager is already instantiated, destroying this one");
             Destroy(gameObject);
             return;
         }
 
         DontDestroyOnLoad(gameObject);
         _currentLevelIndex = 0;
+    }
+
+    private void OnDestroy()
+    {
+        instance = null;
     }
 
     public void LoadFirstLevel()

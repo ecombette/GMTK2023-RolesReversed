@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Priority_Queue;
 
-public class GridPathfinding : MonoBehaviour
+public class GridPathfindingAgent : MonoBehaviour
 {
     [SerializeField]
     private GridReference _gridReference;
@@ -10,8 +10,9 @@ public class GridPathfinding : MonoBehaviour
     private Node _currentNode;
 
     private PathFindingTargetReference _currentTarget;
-    private Dictionary<Node, Node> _cameFrom = new Dictionary<Node, Node>();
-    private Dictionary<Node, int> _costSoFar = new Dictionary<Node, int>();
+    private readonly Dictionary<Node, Node> _cameFrom = new Dictionary<Node, Node>();
+    private readonly Dictionary<Node, int> _costSoFar = new Dictionary<Node, int>();
+    private readonly Dictionary<Node, Node> _currentPath = new Dictionary<Node, Node>();
 
     public void FindPath(PathFindingTargetReference targetReference)
     {
@@ -49,28 +50,44 @@ public class GridPathfinding : MonoBehaviour
             }
         }
 
-        var nodeStack = new Stack<Node>();
-        var currentDisplayNode = targetNode;
-        nodeStack.Push(targetNode);
-        while (_cameFrom.TryGetValue(currentDisplayNode, out Node previousNode))
+        _currentPath.Clear();
+        Node currentPathNode = targetNode;
+        Node previousNode = null;
+        while (_cameFrom.TryGetValue(currentPathNode, out previousNode))
         {
-            Logger.Log($"[AI] Backtracking : {previousNode} => {currentDisplayNode}");
-            currentDisplayNode.SelectNode(true);
-            nodeStack.Push(previousNode);
-            currentDisplayNode = previousNode;
+            _currentPath[previousNode] = currentPathNode;
+            currentPathNode = previousNode;
 
-            if(currentDisplayNode == _currentNode)
+            if (currentPathNode == _currentNode)
             {
                 Logger.Log($"[AI] Start node found : {previousNode} => {_currentNode}");
                 break;
             }
         }
+#if UNITY_EDITOR
+        editorDisplayPath(); 
+#endif
     }
 
     public Vector3 GetNextPosition()
     {
-        //TODO 0:)
-        return Vector3.zero;
+        if(_currentNode == null)
+        {
+            Logger.LogError("No current node set, can't get next position");
+            return transform.position;
+        }
+        if(!_currentPath.TryGetValue(_currentNode, out Node nextNode))
+        {
+            Logger.LogError("Current node not in current path, can't get next position");
+            return transform.position;
+        }
+        if(nextNode == null)
+        {
+            Logger.LogError("Empty next node, can't get next position");
+            return transform.position;
+        }
+
+        return nextNode.transform.position;
     }
 
     private float heuristic(Node nodeA, Node nodeB)
@@ -99,6 +116,27 @@ public class GridPathfinding : MonoBehaviour
         }
 
         UnityEditor.EditorUtility.SetDirty(this);
+    }
+
+    private void editorDisplayPath()
+    {
+        _gridReference.Reference.ResetNodesSelection();
+
+        var targetNode = _currentTarget.CurrentNode;
+        Node currentDisplayNode = _currentNode;
+        Node nextNode = null;
+        while (_currentPath.TryGetValue(currentDisplayNode, out nextNode))
+        {
+            currentDisplayNode.SelectNode(true);
+            currentDisplayNode = nextNode;
+
+            if (currentDisplayNode == _currentNode)
+            {
+                Logger.Log($"[AI] End node found : {currentDisplayNode} => {targetNode}");
+                currentDisplayNode.SelectNode(true);
+                break;
+            }
+        }
     }
 #endif
 }

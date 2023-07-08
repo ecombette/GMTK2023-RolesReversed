@@ -3,7 +3,7 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     [SerializeField]
-    private GridPathfinding _pathfindingManager;
+    private GridPathfindingAgent _pathfindingManager;
     [SerializeField]
     private PathFindingTargetReference _target;
 

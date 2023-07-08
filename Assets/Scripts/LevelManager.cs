@@ -7,8 +7,7 @@ public class LevelManager : MonoBehaviour
     private GameManager _gameManager;
     [SerializeField]
     private GoldPile[] _goldPiles;
-    [SerializeField]
-    private UnityEvent _onAllPilesPickedUp;
+    public UnityEvent OnAllPilesPickedUp;
 
     private void OnEnable()
     {
@@ -28,7 +27,7 @@ public class LevelManager : MonoBehaviour
         }
 
         Logger.Log("All gold piles picked up, triggering end of level");
-        _onAllPilesPickedUp?.Invoke();
+        OnAllPilesPickedUp?.Invoke();
     }
 
     public void LoadNextLevel()

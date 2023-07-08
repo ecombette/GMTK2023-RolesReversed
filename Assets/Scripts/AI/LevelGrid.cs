@@ -23,6 +23,12 @@ public class LevelGrid : MonoBehaviour
     }
 
 #if UNITY_EDITOR
+    [ContextMenu("Init Grid Reference")]
+    public void InitGridReference()
+    {
+        _gridReference.Init(this);
+    }
+
     [ContextMenu("Refresh Child Nodes List")]
     public void EditorRefreshChildNodesList()
     {

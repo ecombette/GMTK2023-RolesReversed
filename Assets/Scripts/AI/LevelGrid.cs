@@ -9,8 +9,6 @@ public class LevelGrid : MonoBehaviour
     private GridReference _gridReference;
     [SerializeField]
     private List<Node> _nodes;
-    [SerializeField]
-    private Node _startingNode;
 
     public ReadOnlyCollection<Node> Nodes => _nodes.AsReadOnly();
 

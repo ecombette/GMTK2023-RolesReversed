@@ -30,6 +30,14 @@ public class DoorManager : MonoBehaviour
         }
     }
 
+    [ContextMenu("Load Next Level")]
+    public void LoadNextLevel()
+    {
+        if (GameManager.Instance)
+            GameManager.Instance.LoadNextLevel();
+    }
+
+
     private void OnDisable()
     {
         _levelManager.OnAllPilesPickedUp.RemoveListener(unlockDoor);

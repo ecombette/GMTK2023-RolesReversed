@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public class GridPathfinding : MonoBehaviour
@@ -49,7 +47,7 @@ public class GridPathfinding : MonoBehaviour
             }
         }
 
-        EditorUtility.SetDirty(this);
+        UnityEditor.EditorUtility.SetDirty(this);
     }
 #endif
 }

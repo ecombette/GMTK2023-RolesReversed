@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public class Node : MonoBehaviour
@@ -37,7 +36,7 @@ public class Node : MonoBehaviour
                 _neighbours.Add(node);
         }
 
-        EditorUtility.SetDirty(this);
+        UnityEditor.EditorUtility.SetDirty(this);
     }
 #endif
 }

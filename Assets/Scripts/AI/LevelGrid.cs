@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using UnityEditor;
 using UnityEngine;
 
 public class LevelGrid : MonoBehaviour
@@ -33,7 +32,7 @@ public class LevelGrid : MonoBehaviour
             _nodes.Clear();
 
         _nodes.AddRange(GetComponentsInChildren<Node>());
-        EditorUtility.SetDirty(this);
+        UnityEditor.EditorUtility.SetDirty(this);
     }
 
     [ContextMenu("Refresh Nodes Neighbours")]

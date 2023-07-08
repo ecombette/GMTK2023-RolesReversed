@@ -31,6 +31,12 @@ public class ChestController : MonoBehaviour
     [SerializeField] Animator _animator;
     static int HASH_UP = Animator.StringToHash("XAngle");
 
+    private void OnEnable()
+    {
+        if (_animator)
+            _animator.SetFloat(HASH_UP, 1);
+    }
+
     private void Update()
     {
         if (_movementTimer <= 0f)

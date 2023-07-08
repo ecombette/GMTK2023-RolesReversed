@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
 {
     [Header("Levels")]
     [SerializeField] private LevelList _levelList;
+    [SerializeField] UICanvasFade _canvasFade;
     [SerializeField] private UnityEvent<int> _onStartLoadingScene, _onSceneLoaded;
 
     [ContextMenu("Load First Level")]
@@ -55,7 +56,9 @@ public class GameManager : MonoBehaviour
 
             IEnumerator loadScene()
             {
-                yield return new WaitForSeconds(0.15f);
+                _canvasFade.FadeOut();
+
+                yield return new WaitForSeconds(0.35f);
 
                 _onStartLoadingScene?.Invoke(_levelList._currentLevelIndex);
                 var asyncLoadOperation = SceneManager.LoadSceneAsync(_levelList._levels[_levelList._currentLevelIndex], LoadSceneMode.Single);

@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dec3b546942c7447ac9198135d91d9d, type: 3}
   m_Name: LevelList
   m_EditorClassIdentifier: 
-  _levels: []
-  _scenesFolderPath: Assets/Scenes
+  _levels:
+  - SC_00_StartScreen
+  - SC_01_Level
+  - SC_98_Level
+  - SC_99_Level_Test
+  _scenesFolderPath: Assets/Scenes/Levels
   _currentLevelIndex: 0

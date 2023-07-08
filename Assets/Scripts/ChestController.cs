@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ChestController : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class ChestController : MonoBehaviour
     private float _inputSensitivity = 0.15f;
     [SerializeField][Range(0.1f, 2f)]
     private float _movementCooldown = 0.5f;
+
+    [SerializeField]
+    private UnityEvent _onMove;
 
     private float _movementTimer = 0f;
 
@@ -46,6 +50,8 @@ public class ChestController : MonoBehaviour
 
     private void move(Vector3 movement)
     {
+        _onMove?.Invoke();
+
         Vector3 startPos = transform.position;
         Vector3 targetPos = transform.position += movement;
 

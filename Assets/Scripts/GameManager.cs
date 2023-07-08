@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.SceneManagement;
+
 #if UNITY_EDITOR
 using UnityEditor;
 using UnityEditor.SceneManagement;
 #endif
-using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,22 +15,19 @@ public class GameManager : MonoBehaviour
     [SerializeField] private LevelList _levelList;
     [SerializeField] private UnityEvent<int> _onStartLoadingScene, _onSceneLoaded;
 
-    //private void Awake()
-    //{
-    //    DontDestroyOnLoad(gameObject);
-    //    _levelList._currentLevelIndex = 0;
-    //}
-
+    [ContextMenu("Load First Level")]
     public void LoadFirstLevel()
     {
         LoadLevel(0);
     }
 
+    [ContextMenu("Load Current Level")]
     public void LoadCurrentLevel()
     {
         LoadLevel(_levelList._currentLevelIndex);
     }
 
+    [ContextMenu("Load Next Level")]
     public void LoadNextLevel()
     {
         LoadLevel(_levelList._currentLevelIndex + 1);
@@ -71,6 +69,7 @@ public class GameManager : MonoBehaviour
     }
 
 #if UNITY_EDITOR
+    [ContextMenu("Refresh Levels List")]
     public void EditorRefreshLevelsList()
     {
         List<EditorBuildSettingsScene> scenesToBuild = new List<EditorBuildSettingsScene>();

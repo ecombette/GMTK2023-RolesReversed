@@ -4,6 +4,8 @@ using UnityEngine.Events;
 public class LevelManager : MonoBehaviour
 {
     [SerializeField]
+    private GameManager _gameManager;
+    [SerializeField]
     private GoldPile[] _goldPiles;
     [SerializeField]
     private UnityEvent _onAllPilesPickedUp;
@@ -31,13 +33,12 @@ public class LevelManager : MonoBehaviour
 
     public void LoadNextLevel()
     {
-        var gameManager = GameManager.Instance;
-        if (gameManager == null)
+        if (_gameManager == null)
         {
-            Logger.LogError("No game manager found, won't load next level");
+            Logger.LogError("No game manager referenced, won't load next level");
             return;
         }
 
-        gameManager.LoadNextLevel();
+        _gameManager.LoadNextLevel();
     }
 }

@@ -42,6 +42,6 @@ public class ChestController : MonoBehaviour
     private void move(Vector3 movement)
     {
         transform.position += movement;
-        transform.Rotate(Vector3.Cross(movement, Vector3.up), 90f);
+        transform.Rotate(Vector3.Cross(movement, Vector3.up), 90f, Space.World);
     }
 }

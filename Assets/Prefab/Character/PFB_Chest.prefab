@@ -87,7 +87,7 @@ MonoBehaviour:
       - m_Target: {fileID: 7347196903768541828}
         m_TargetAssemblyTypeName: PathFindingTarget, Assembly-CSharp
         m_MethodName: SetTargetMove
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -291,6 +291,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetReference: {fileID: 11400000, guid: 1c8bf6a0ad9e5054aa5da0e55563d3f7, type: 2}
+  _gridReference: {fileID: 11400000, guid: 885bb826d098efe4fb75b19ee05841af, type: 2}
+  _currentNode: {fileID: 0}
 --- !u!1001 &2066841769474045107
 PrefabInstance:
   m_ObjectHideFlags: 0

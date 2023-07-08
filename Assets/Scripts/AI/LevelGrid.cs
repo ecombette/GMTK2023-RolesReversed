@@ -20,7 +20,16 @@ public class LevelGrid : MonoBehaviour
         }
 
         _gridReference.Init(this);
+        ResetNodesSelection();
     }
+
+    [ContextMenu("Reset Nodes Selection")]
+    public void ResetNodesSelection()
+    {
+        foreach (var node in _nodes)
+            node.SelectNode(false);
+    }
+
 
 #if UNITY_EDITOR
     [ContextMenu("Init Grid Reference")]

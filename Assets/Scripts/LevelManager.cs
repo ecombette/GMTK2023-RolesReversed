@@ -4,8 +4,6 @@ using UnityEngine.Events;
 public class LevelManager : MonoBehaviour
 {
     [SerializeField]
-    private GameManager _gameManager;
-    [SerializeField]
     private GoldPile[] _goldPiles;
     public UnityEvent OnAllPilesPickedUp;
 
@@ -28,16 +26,5 @@ public class LevelManager : MonoBehaviour
 
         Logger.Log("All gold piles picked up, triggering end of level");
         OnAllPilesPickedUp?.Invoke();
-    }
-
-    public void LoadNextLevel()
-    {
-        if (_gameManager == null)
-        {
-            Logger.LogError("No game manager referenced, won't load next level");
-            return;
-        }
-
-        _gameManager.LoadNextLevel();
     }
 }

@@ -11,10 +11,18 @@ using UnityEditor.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
+
     [Header("Levels")]
     [SerializeField] private LevelList _levelList;
     [SerializeField] UICanvasFade _canvasFade;
     [SerializeField] private UnityEvent<int> _onStartLoadingScene, _onSceneLoaded;
+
+    public void Awake()
+    {
+        Instance = this;
+    }
+
 
     [ContextMenu("Load First Level")]
     public void LoadFirstLevel()

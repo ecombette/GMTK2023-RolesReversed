@@ -14,6 +14,7 @@ public class GoldPile : MonoBehaviour
         _isPickedUp = false;
     }
 
+    [ContextMenu("Pick Up")]
     public void PickUp()
     {
         if(_isPickedUp)

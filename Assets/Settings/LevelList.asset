@@ -18,4 +18,4 @@ MonoBehaviour:
   - SC_98_Level
   - SC_99_Level_Test
   _scenesFolderPath: Assets/Scenes/Levels
-  _currentLevelIndex: 0
+  _currentLevelIndex: 1

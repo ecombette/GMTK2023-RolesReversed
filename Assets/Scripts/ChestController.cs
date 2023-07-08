@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class ChestController : MonoBehaviour
@@ -9,6 +10,10 @@ public class ChestController : MonoBehaviour
     private float _movementCooldown = 0.5f;
 
     private float _movementTimer = 0f;
+
+    [SerializeField] float _movementSpeed = 3f;
+    [SerializeField] AnimationCurve _movementCurve;
+    [SerializeField] AnimationCurve _rotationCurve;
 
     private void Update()
     {
@@ -41,7 +46,28 @@ public class ChestController : MonoBehaviour
 
     private void move(Vector3 movement)
     {
-        transform.position += movement;
-        transform.Rotate(Vector3.Cross(movement, Vector3.up), 90f, Space.World);
+        Vector3 startPos = transform.position;
+        Vector3 targetPos = transform.position += movement;
+
+        Quaternion startRot = transform.rotation;
+        Quaternion targetRot = Quaternion.identity /*Vector3.Cross(movement, Vector3.up) * 90f*/;
+
+        StartCoroutine(lerpMovement());
+        IEnumerator lerpMovement()
+        {
+            float t = 0f;
+
+            while(t < 1f)
+            {
+                t += Time.deltaTime * _movementSpeed;
+
+                transform.position = Vector3.Lerp(startPos, targetPos, _movementCurve.Evaluate(t));
+                transform.rotation = Quaternion.Slerp(startRot, targetRot, _rotationCurve.Evaluate(t));
+                yield return null;
+            }
+        }
+
+
+        //transform.Rotate(Vector3.Cross(movement, Vector3.up), 90f, Space.World);
     }
 }

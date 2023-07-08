@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 647361209205910550}
   - component: {fileID: 5642055905547395627}
   m_Layer: 5
-  m_Name: PFB_Camera_UI
+  m_Name: PFB_Camera_UI_Tutorial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -267,7 +267,7 @@ GameObject:
   - component: {fileID: 968842164547873394}
   - component: {fileID: 968842164547873395}
   m_Layer: 5
-  m_Name: UI_Canvas
+  m_Name: Canvas_Tutorial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

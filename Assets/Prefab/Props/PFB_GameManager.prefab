@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 7613597459132221760}
   - component: {fileID: 5520779146343302945}
   - component: {fileID: 4899729212215063424}
+  - component: {fileID: 66169515723328655}
+  - component: {fileID: 7088088913629198826}
   m_Layer: 0
   m_Name: PFB_GameManager
   m_TagString: Untagged
@@ -67,6 +69,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fadeMaterial: {fileID: 2100000, guid: 08ebdbcf27d6e9842b0bd9755bf7831f, type: 2}
+--- !u!114 &66169515723328655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4322429768852760982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f508b616ea76244e919b344fc0a9c62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 1.5
+  _canvasInGame: {fileID: 7088088913629198826}
+--- !u!114 &7088088913629198826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4322429768852760982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c70dd6a58d294a4eb02da9a8af0e849, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 2178409191347926100}
 --- !u!1001 &3078977271675853747
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -188,6 +217,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3943fadeae72f94fb8eb3beb20c979a, type: 3}
+--- !u!95 &2178409191347926100 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3783580168119955431, guid: f3943fadeae72f94fb8eb3beb20c979a, type: 3}
+  m_PrefabInstance: {fileID: 3078977271675853747}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &3508029976684014807 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1879618626337748836, guid: f3943fadeae72f94fb8eb3beb20c979a, type: 3}

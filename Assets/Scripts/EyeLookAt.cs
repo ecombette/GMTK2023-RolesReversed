@@ -6,7 +6,6 @@ public class EyeLookAt : MonoBehaviour
 {
     Transform _camera;
     [SerializeField] Vector3 _offset;
-    [SerializeField] float _limitAngle = 40f;
 
     public void OnEnable()
     {

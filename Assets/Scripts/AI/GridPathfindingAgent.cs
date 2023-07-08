@@ -16,6 +16,12 @@ public class GridPathfindingAgent : MonoBehaviour
 
     public void FindPath(PathFindingTargetReference targetReference)
     {
+        if(targetReference == null || targetReference.Reference == null)
+        {
+            Logger.LogError("Trying to find path to empty target, aborting");
+            return;
+        }
+
         if (_currentTarget != null && _currentTarget != targetReference)
             _currentTarget.ResetTarget();
 

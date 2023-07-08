@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PathFindingTarget : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class PathFindingTarget : MonoBehaviour
     private GridReference _gridReference;
     [SerializeField]
     private Node _currentNode;
+
+    public UnityAction OnTargetMoved, OnTargetMoveAttempt;
 
     public Node CurrentNode => _currentNode;
 
@@ -22,9 +25,36 @@ public class PathFindingTarget : MonoBehaviour
         _targetReference.Init(this);
     }
 
-    public void SetTargetMove()
+    private void OnDestroy()
     {
-        //TODO
+        _targetReference.ResetTarget();
+    }
+
+    public void ResetListeners()
+    {
+        OnTargetMoved = null;
+        OnTargetMoveAttempt = null;
+    }
+
+    public void SetTargetMove(Direction direction)
+    {
+        if(_currentNode == null)
+        {
+            Logger.LogWarning("No current node, can't move");
+            return;
+        }
+
+        var nextNode = _currentNode.GetNeighbour(direction);
+        if(nextNode == null)
+        {
+            Logger.Log($"Node {_currentNode} neighbouring node to its {direction}, won't move");
+            //TODO: boink contre un obstacle :)
+            OnTargetMoveAttempt?.Invoke();
+            return;
+        }
+        
+        _currentNode = nextNode;
+        OnTargetMoved?.Invoke();
     }
 
 #if UNITY_EDITOR

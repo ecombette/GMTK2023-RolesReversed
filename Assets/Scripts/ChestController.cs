@@ -13,7 +13,7 @@ public class ChestController : MonoBehaviour
     private float _movementCooldown = 0.5f;
 
     [SerializeField]
-    private UnityEvent _onMove;
+    private UnityEvent<Direction> _onMove;
 
     private float _movementTimer = 0f;
 
@@ -40,18 +40,18 @@ public class ChestController : MonoBehaviour
             if (Mathf.Abs(horizontalAxis) >= _inputSensitivity)
             {
                 if (horizontalAxis > 0f)
-                    move(Vector3.right);
+                    move(Direction.RIGHT);
                 else
-                    move(Vector3.left);
+                    move(Direction.LEFT);
 
                 _movementTimer = _movementCooldown;
             }
             else if (Mathf.Abs(verticalAxis) >= _inputSensitivity)
             {
                 if (verticalAxis > 0f)
-                    move(Vector3.forward);
+                    move(Direction.UP);
                 else
-                    move(-Vector3.forward);
+                    move(Direction.DOWN);
 
                 _movementTimer = _movementCooldown;
             }
@@ -60,12 +60,13 @@ public class ChestController : MonoBehaviour
             _movementTimer -= Time.deltaTime;
     }
 
-    private void move(Vector3 movement)
+    private void move(Direction direction)
     {
-        _onMove?.Invoke();
+        _onMove?.Invoke(direction);
 
+        Vector3 movement = DirectionUtility.GetDirectionalMovement(direction);
         Vector3 startPos = transform.position;
-        Vector3 targetPos = transform.position += movement;
+        Vector3 targetPos = transform.position + movement;
 
         Quaternion startRot = _chest.rotation;
         Quaternion targetRot = Quaternion.AngleAxis(-90f, Vector3.Cross(movement, Vector3.up)) * startRot;

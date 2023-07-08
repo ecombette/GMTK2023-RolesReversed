@@ -19,6 +19,9 @@ public class PathFindingTargetReference : ScriptableObject
 
     public void ResetTarget()
     {
+        if(_reference)
+            _reference.ResetListeners();
+
         _reference = null;
     }
 }

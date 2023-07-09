@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Spike : MonoBehaviour
 {
+    [SerializeField] Node _node;
     [SerializeField] private PathFindingTargetReference _target;
     [SerializeField] Transform _spike;
     [SerializeField] List<float> _yPos;
     int _currentState = 0;
+    [SerializeField] Collider _playerDetectionCollider;
 
     private void Start()
     {
@@ -34,6 +36,11 @@ public class Spike : MonoBehaviour
 
         float endYPos = _yPos[_currentState];
 
+        if (_currentState != 0)
+            _node.UpdateCost(50);
+        else
+            _node.UpdateCost(1);
+
         StartCoroutine(lerpSpike());
         IEnumerator lerpSpike()
         {
@@ -46,6 +53,15 @@ public class Spike : MonoBehaviour
                 _spike.position = new Vector3(_spike.position.x, _yPos[_currentState], _spike.position.z);
                 yield return null;
             }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            GameManager.Instance.GameOver();
+            _playerDetectionCollider.enabled = false;
         }
     }
 }

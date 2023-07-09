@@ -1,12 +1,15 @@
+using GD.MinMaxSlider;
 using System.Collections;
 using UnityEngine;
 
 public class ChestController : MonoBehaviour
 {
     [Header("Input")]
-    [SerializeField][Range(0.1f, 1f)]
+    [SerializeField]
+    [Range(0.1f, 1f)]
     private float _inputSensitivity = 0.15f;
-    [SerializeField][Range(0.1f, 2f)]
+    [SerializeField]
+    [Range(0.1f, 2f)]
     private float _movementCooldown = 0.5f;
     [SerializeField]
     private PathFindingTarget _aiTargetManager;
@@ -23,19 +26,21 @@ public class ChestController : MonoBehaviour
     [SerializeField] AnimationCurve _scaleCurveZ;
     Coroutine _lerpScaleCoroutine;
 
+    [Space]
+    [SerializeField] Transform _chestDead;
+    [SerializeField] ChestDeath _chestDeath;
+
     [Header("Animation")]
     [SerializeField] Animator _animator;
     private readonly int HASH_UP = Animator.StringToHash("XAngle");
-    [SerializeField] Transform _chestDead;
-    [SerializeField] GameObject _groundCollider;
 
     private float _movementTimer = 0f;
 
     [Header("Audio")]
     [SerializeField] AudioSource _source;
     [SerializeField] AudioClip _moveSFX;
+    [SerializeField, MinMaxSlider(0f, 2f)] Vector2 _pitchRandom = new Vector2(0.9f, 1.2f);
     [SerializeField] AudioClip _cantMoveSFX;
-    [SerializeField] AudioClip _dieSFX;
     [SerializeField] AudioClip _eatGoldSFX;
 
     private void OnEnable()
@@ -70,9 +75,9 @@ public class ChestController : MonoBehaviour
                 _movementTimer = _movementCooldown;
             }
 
-            if(direction != Direction.NONE)
+            if (direction != Direction.NONE)
             {
-                if(_aiTargetManager)
+                if (_aiTargetManager)
                 {
                     if (_aiTargetManager.TryTargetMove(direction))
                         move(direction);
@@ -89,7 +94,7 @@ public class ChestController : MonoBehaviour
 
     private void move(Direction direction)
     {
-        playSound(_moveSFX);
+        playSound(_moveSFX, Random.Range(_pitchRandom.x, _pitchRandom.y));
 
         Vector3 movement = DirectionUtility.GetDirectionalMovement(direction);
         Vector3 startPos = transform.position;
@@ -131,7 +136,7 @@ public class ChestController : MonoBehaviour
         if (_lerpScaleCoroutine != null)
             StopCoroutine(_lerpScaleCoroutine);
 
-        playSound(_cantMoveSFX);
+        playSound(_cantMoveSFX, Random.Range(_pitchRandom.x, _pitchRandom.y));
 
         _lerpScaleCoroutine = StartCoroutine(lerpScale());
     }
@@ -152,25 +157,23 @@ public class ChestController : MonoBehaviour
     [ContextMenu("Kill Chest")]
     public void KillChest()
     {
-        _groundCollider.SetActive(true);
-        _chest.gameObject.SetActive(false);
-        _chestDead.gameObject.SetActive(true);
-        playSound(_dieSFX);
+        _chestDeath.KillChest();
         this.enabled = false;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("GoldPile"))
-            playSound(_eatGoldSFX);
+            playSound(_eatGoldSFX, 1f);
     }
 
-    private void playSound(AudioClip clip)
+    private void playSound(AudioClip clip, float pitch)
     {
-        if(_source && clip)
+        if (_source && clip)
         {
+            _source.pitch = pitch;
             _source.clip = clip;
             _source.Play();
-        }    
+        }
     }
 }

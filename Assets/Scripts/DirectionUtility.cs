@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public enum Direction { UP, DOWN, LEFT, RIGHT, COUNT }
+public enum Direction { UP, DOWN, LEFT, RIGHT, NONE }
 
 public static class DirectionUtility
 {
@@ -9,6 +9,9 @@ public static class DirectionUtility
         Vector3.forward, -Vector3.forward, Vector3.left, Vector3.right
     };
 
+    private static int _directionCount = 4;
+
+    public static int DirectionCount => _directionCount;
     public static Vector3 GetDirectionalMovement(Direction direction)
-        => direction == Direction.COUNT ? Vector3.zero : _directionalMovements[(int)direction];
+        => direction == Direction.NONE ? Vector3.zero : _directionalMovements[(int)direction];
 }

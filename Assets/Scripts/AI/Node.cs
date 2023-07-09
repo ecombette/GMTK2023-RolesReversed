@@ -12,7 +12,7 @@ public class Node : MonoBehaviour
     [SerializeField]
     private List<Node> _neighbours;
     [SerializeField]
-    private Node[] _directionalNeighbourhood = new Node[(int)Direction.COUNT];
+    private Node[] _directionalNeighbourhood = new Node[DirectionUtility.DirectionCount];
 
     [SerializeField] private float _searchRadius = 1.1f;
 
@@ -82,7 +82,7 @@ public class Node : MonoBehaviour
 
     private void editorClearDirectionalNeighbourhood()
     {
-        for(int i = 0; i < (int)Direction.COUNT; i++)
+        for(int i = 0; i < DirectionUtility.DirectionCount; i++)
             _directionalNeighbourhood[i] = null;
     }
 #endif

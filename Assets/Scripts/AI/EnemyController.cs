@@ -33,8 +33,10 @@ public class EnemyController : MonoBehaviour
                 Logger.LogError("No target referenced in asset yet, won't subscribe to move events");
             else
             {
-                targetReference.OnTargetMoved += UpdatePath;
+                UpdatePath();
+
                 targetReference.OnTargetMoved += NextMove;
+                targetReference.OnTargetMoved += UpdatePath;
                 targetReference.OnTargetMoveAttempt += NextMove;
             }
         }

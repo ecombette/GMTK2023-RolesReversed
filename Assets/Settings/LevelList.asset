@@ -19,5 +19,6 @@ MonoBehaviour:
   - SC_03_Level
   - SC_04_Level
   - SC_05_Level
+  - SC_06_Level
   - SC_99_End
   _scenesFolderPath: Assets/Scenes/Levels

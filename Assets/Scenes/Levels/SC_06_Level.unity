@@ -862,6 +862,14 @@ PrefabInstance:
       propertyPath: _levelManager
       value: 
       objectReference: {fileID: 643218417}
+    - target: {fileID: 5028648691684030440, guid: 4d3f75ee1d145834a81d7ced5c2c3290, type: 3}
+      propertyPath: InitialModule.rotation3D
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5028648691684030440, guid: 4d3f75ee1d145834a81d7ced5c2c3290, type: 3}
+      propertyPath: InitialModule.startRotationY.scalar
+      value: -1.5707963
+      objectReference: {fileID: 0}
     - target: {fileID: 5432625082709577622, guid: 4d3f75ee1d145834a81d7ced5c2c3290, type: 3}
       propertyPath: m_Name
       value: PFB_Wall_Door
@@ -1291,7 +1299,7 @@ PrefabInstance:
     - target: {fileID: 7347196903768541828, guid: d266a785125f281459f9459a6685b629, type: 3}
       propertyPath: _currentNode
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 470873957}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d266a785125f281459f9459a6685b629, type: 3}
 --- !u!1 &643218415

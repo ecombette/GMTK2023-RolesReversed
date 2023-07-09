@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9008750542741795868}
   - component: {fileID: 9008750542741795871}
   - component: {fileID: 3345348121026612597}
+  - component: {fileID: 8928390411354523484}
   m_Layer: 0
   m_Name: PFB_Spike
   m_TagString: Untagged
@@ -48,11 +49,56 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _node: {fileID: 3345348121026612597}
   _target: {fileID: 11400000, guid: 1c8bf6a0ad9e5054aa5da0e55563d3f7, type: 2}
+  _playerDetectionCollider: {fileID: 8928390411354523484}
   _spike: {fileID: 7950032564464814291}
   _yPos:
   - -0.75
   - -0.6
   - 0
+  _movementDuration: 0.5
+  _movementCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.6100064
+      value: 0.2197992
+      inSlope: 0.76122886
+      outSlope: 0.76122886
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.9495039
+    - serializedVersion: 3
+      time: 0.7898921
+      value: 0.904518
+      inSlope: 2.8404362
+      outSlope: 2.8404362
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0.34198108
+      outSlope: 0.34198108
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.7547351
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _triggerEnablingThreshold: 0.1
 --- !u!114 &3345348121026612597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,6 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gridReference: {fileID: 11400000, guid: 885bb826d098efe4fb75b19ee05841af, type: 2}
+  _isWalkable: 1
   _nodeCost: 1
   _neighbours: []
   _directionalNeighbourhood:
@@ -80,6 +127,19 @@ MonoBehaviour:
   _onNodeUnselected:
     m_PersistentCalls:
       m_Calls: []
+--- !u!135 &8928390411354523484
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9008750542741795870}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.3
+  m_Center: {x: 0, y: 0.3, z: 0}
 --- !u!1001 &7564558883277637566
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -647,6 +647,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 6451927225687631938}
+        m_TargetAssemblyTypeName: Node, Assembly-CSharp
+        m_MethodName: SetWalkable
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   _lock: {fileID: 1115977846774406556}
   _lockParticle: {fileID: 5028648691684030440}
   _doorAnimator: {fileID: 148479580926548436}
@@ -699,6 +711,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gridReference: {fileID: 11400000, guid: 885bb826d098efe4fb75b19ee05841af, type: 2}
+  _isWalkable: 0
   _nodeCost: 1
   _neighbours: []
   _directionalNeighbourhood:

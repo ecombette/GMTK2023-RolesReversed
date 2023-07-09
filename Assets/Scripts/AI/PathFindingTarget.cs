@@ -51,7 +51,7 @@ public class PathFindingTarget : MonoBehaviour
         }
 
         var nextNode = _currentNode.GetNeighbour(direction);
-        if(nextNode == null)
+        if(nextNode == null || !nextNode.IsWalkable)
         {
             Logger.Log($"Node {_currentNode} neighbouring node to its {direction}, won't move");
             OnTargetMoveAttempt?.Invoke();

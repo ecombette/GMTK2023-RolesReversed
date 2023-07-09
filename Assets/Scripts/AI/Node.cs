@@ -8,6 +8,8 @@ public class Node : MonoBehaviour
     [SerializeField]
     private GridReference _gridReference;
     [SerializeField]
+    private bool _isWalkable = true;
+    [SerializeField]
     private int _nodeCost = 1;
     [SerializeField]
     private List<Node> _neighbours;
@@ -22,6 +24,7 @@ public class Node : MonoBehaviour
     public int Cost => _nodeCost;
     public ReadOnlyCollection<Node> Neighbours => _neighbours.AsReadOnly();
 
+    public bool IsWalkable => _isWalkable;
     public bool HasNeighbour(Direction direction) => _directionalNeighbourhood[(int)direction] != null;
     public Node GetNeighbour(Direction direction) => _directionalNeighbourhood[(int)direction];
 
@@ -34,6 +37,11 @@ public class Node : MonoBehaviour
         }
         else
             _onNodeUnselected?.Invoke();
+    }
+
+    public void SetWalkable(bool walkable)
+    {
+        _isWalkable = walkable;
     }
 
     public void UpdateCost(int cost)

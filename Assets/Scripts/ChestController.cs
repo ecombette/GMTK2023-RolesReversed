@@ -145,6 +145,12 @@ public class ChestController : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("GoldPile"))
+            playSound(_eatGoldSFX);
+    }
+
     private void playSound(AudioClip clip)
     {
         if(_source && clip)

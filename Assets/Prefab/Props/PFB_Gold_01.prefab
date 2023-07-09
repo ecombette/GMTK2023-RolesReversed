@@ -308,7 +308,7 @@ GameObject:
   - component: {fileID: 4092215570130995584}
   m_Layer: 0
   m_Name: PFB_Gold_01
-  m_TagString: Untagged
+  m_TagString: GoldPile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -347,6 +347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isPickedUp: 0
+  _collider: {fileID: 4092215570130995584}
 --- !u!114 &6529927876614821359
 MonoBehaviour:
   m_ObjectHideFlags: 0

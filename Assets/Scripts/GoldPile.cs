@@ -8,6 +8,7 @@ public class GoldPile : MonoBehaviour
 
     public bool IsPickedUp => _isPickedUp;
     public UnityAction OnPickedUp;
+    [SerializeField] Collider _collider;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -31,5 +32,6 @@ public class GoldPile : MonoBehaviour
 
         _isPickedUp = true;
         OnPickedUp?.Invoke();
+        _collider.enabled = false;
     }
 }

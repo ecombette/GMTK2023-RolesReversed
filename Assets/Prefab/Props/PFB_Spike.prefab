@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9008750542741795868}
   - component: {fileID: 9008750542741795871}
+  - component: {fileID: 3345348121026612597}
   m_Layer: 0
   m_Name: PFB_Spike
   m_TagString: Untagged
@@ -45,12 +46,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ad8cfa318cd191489f535b9b4b101d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _node: {fileID: 3345348121026612597}
   _target: {fileID: 11400000, guid: 1c8bf6a0ad9e5054aa5da0e55563d3f7, type: 2}
   _spike: {fileID: 7950032564464814291}
   _yPos:
   - -0.75
   - -0.6
   - 0
+--- !u!114 &3345348121026612597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9008750542741795870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8120245176b6c154bbbd0341ca6440a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gridReference: {fileID: 11400000, guid: 885bb826d098efe4fb75b19ee05841af, type: 2}
+  _nodeCost: 1
+  _neighbours: []
+  _directionalNeighbourhood:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _searchRadius: 1.1
+  _onNodeSelected:
+    m_PersistentCalls:
+      m_Calls: []
+  _onNodeUnselected:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &7564558883277637566
 PrefabInstance:
   m_ObjectHideFlags: 0

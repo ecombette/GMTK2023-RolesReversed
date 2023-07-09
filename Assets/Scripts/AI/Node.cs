@@ -44,6 +44,11 @@ public class Node : MonoBehaviour
         _isWalkable = walkable;
     }
 
+    public void UpdateCost(int cost)
+    {
+        _nodeCost = cost;
+    }
+
 #if UNITY_EDITOR
     [ContextMenu("Refresh Neighbours")]
     public void EditorRefreshNeighbours()

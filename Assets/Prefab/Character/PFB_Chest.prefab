@@ -248,6 +248,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7019725412394063861}
   - component: {fileID: 7019725412394063862}
+  - component: {fileID: 134074862385442496}
   - component: {fileID: 7347196903768541828}
   - component: {fileID: 6907605621707865251}
   - component: {fileID: 1735723544850361361}
@@ -475,14 +476,31 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  _chestDead: {fileID: 8316588975955095022}
+  _chestDeath: {fileID: 134074862385442496}
   _animator: {fileID: 2498907141916276475}
+  _source: {fileID: 7196874672123097314}
+  _moveSFX: {fileID: 8300000, guid: 465a0f206ffbc594890ed1edc87b39a5, type: 3}
+  _pitchRandom: {x: 0.9, y: 1.2}
+  _cantMoveSFX: {fileID: 0}
+  _eatGoldSFX: {fileID: 8300000, guid: fe28f56b7b0615c449ae4a7d9b6b9b47, type: 3}
+--- !u!114 &134074862385442496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7019725412394063863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c478bbf26119904c8e99b96fda575bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _chest: {fileID: 8108473497075126320}
   _chestDead: {fileID: 8316588975955095022}
   _groundCollider: {fileID: 593172703493286156}
   _source: {fileID: 7196874672123097314}
-  _moveSFX: {fileID: 0}
-  _cantMoveSFX: {fileID: 0}
-  _dieSFX: {fileID: 0}
-  _eatGoldSFX: {fileID: 8300000, guid: fe28f56b7b0615c449ae4a7d9b6b9b47, type: 3}
+  _dieSFX: {fileID: 8300000, guid: f068336c52d625b4fb6b49d6a6b0a9ad, type: 3}
 --- !u!114 &7347196903768541828
 MonoBehaviour:
   m_ObjectHideFlags: 0

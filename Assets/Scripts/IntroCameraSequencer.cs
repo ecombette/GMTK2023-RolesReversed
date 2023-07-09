@@ -8,6 +8,8 @@ public class IntroCameraSequencer : MonoBehaviour
     CameraFollowPlayer _cameraFollowPlayer;
     [SerializeField] UICanvasInGame _canvasInGame;
 
+    [SerializeField] GameObject _canvasTutorial;
+
     private void OnEnable()
     {
         StartSequence();
@@ -30,6 +32,9 @@ public class IntroCameraSequencer : MonoBehaviour
                 _cameraFollowPlayer.ZoomToPlayer();
                 _cameraFollowPlayer.FollowPlayer();
             }
+
+            if (_canvasTutorial)
+                _canvasTutorial.SetActive(true);
         }
     }
 }

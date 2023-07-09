@@ -1711,7 +1711,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &643218416
 Transform:
   m_ObjectHideFlags: 0
@@ -1744,6 +1744,7 @@ MonoBehaviour:
   OnAllPilesPickedUp:
     m_PersistentCalls:
       m_Calls: []
+  chestController: {fileID: 0}
 --- !u!1001 &668633207
 PrefabInstance:
   m_ObjectHideFlags: 0

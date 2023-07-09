@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
 #endif
     }
 
+    #region Game Events
     [ContextMenu("Game Over")]
     public void GameOver()
     {
@@ -84,7 +85,8 @@ public class GameManager : MonoBehaviour
     public void UnsubscribeFromLevelCompleted(UnityAction onLevelCompleted)
     {
         _onLevelCompleted -= onLevelCompleted;
-    }
+    } 
+    #endregion
 
     #region Level Loading
     [ContextMenu("Load First Level")]
@@ -120,7 +122,7 @@ public class GameManager : MonoBehaviour
 
         if (Application.isPlaying)
         {
-            _levelList.CurrentLevelIndex = levelIndex;
+            _levelList.SetCurrentLevelIndex(levelIndex);
             Logger.Log($"Loading level #{_levelList.CurrentLevelIndex}/{_levelList.LevelCount}");
 
             StartCoroutine(loadScene());
@@ -152,6 +154,10 @@ public class GameManager : MonoBehaviour
 
     public void QuitApp()
     {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.ExitPlaymode();
+#else
         Application.Quit();
+#endif
     }
 }

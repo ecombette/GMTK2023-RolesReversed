@@ -72,8 +72,20 @@ public class EnemyController : MonoBehaviour
     [ContextMenu("Next Move")]
     public void NextMove()
     {
-        if (_pathfindingManager.NextPositionIsTarget)
+        var nextNode = _pathfindingManager.PeekNextNode();
+        if(nextNode == null)
+        {
+            Logger.LogWarning("No next node found, can't move");
             return;
+        }
+        if(_pathfindingManager.IsTargetNode(nextNode))
+        {
+            // If the knight is not facing the target node, simply turn towards it
+            if (Mathf.Abs(Vector3.Dot(transform.forward, nextNode.transform.position - transform.position)) < 0.1f)
+                move(transform.position, nextNode.transform.position);
+
+            return;
+        }
 
         move(_pathfindingManager.GetNextPosition(), _pathfindingManager.PeekNextPosition());
     }

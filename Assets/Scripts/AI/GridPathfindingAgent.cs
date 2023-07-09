@@ -19,6 +19,9 @@ public class GridPathfindingAgent : MonoBehaviour
         && _currentPath.TryGetValue(_currentNode, out Node nextNode)
         && nextNode == _currentTarget.CurrentNode;
 
+    public bool IsTargetNode(Node node)
+        => node != null && _currentTarget != null && _currentTarget.CurrentNode == node;
+
     public void FindPath(PathFindingTargetReference targetReference)
     {
         if(targetReference == null || targetReference.Reference == null)
@@ -80,26 +83,48 @@ public class GridPathfindingAgent : MonoBehaviour
 #endif
     }
 
-    public Vector3 GetNextPosition()
+    public Node GetNextNode()
     {
-        if(_currentNode == null)
+        if (_currentNode == null)
         {
-            Logger.LogError("No current node set, can't get next position");
-            return transform.position;
+            Logger.LogError("No current node set, can't get next node");
+            return null;
         }
-        if(!_currentPath.TryGetValue(_currentNode, out Node nextNode))
+        if (!_currentPath.TryGetValue(_currentNode, out Node nextNode))
         {
-            Logger.LogError("Current node not in current path, can't get next position");
-            return transform.position;
+            Logger.LogError("Current node not in current path, can't get next node");
+            return null;
         }
-        if(nextNode == null)
+        if (nextNode == null)
         {
-            Logger.LogError("Empty next node, can't get next position");
-            return transform.position;
+            Logger.LogError("Empty next node, can't get next node");
+            return null;
         }
 
         _currentNode = nextNode;
-        return _currentNode.transform.position;
+        return _currentNode;
+    }
+
+    public Vector3 GetNextPosition()
+    {
+        GetNextNode();
+        return _currentNode ? _currentNode.transform.position : transform.position;
+    }
+
+    public Node PeekNextNode()
+    {
+        if (_currentNode == null)
+        {
+            Logger.LogError("No current node set, can't peek next node");
+            return null;
+        }
+        if (!_currentPath.TryGetValue(_currentNode, out Node nextNode))
+        {
+            Logger.LogError("Current node not in current path, can't peek next node");
+            return null;
+        }
+
+        return nextNode;
     }
 
     public Vector3 PeekNextPosition()

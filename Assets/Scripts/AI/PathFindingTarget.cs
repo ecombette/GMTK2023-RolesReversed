@@ -23,11 +23,11 @@ public class PathFindingTarget : MonoBehaviour
         }
 
         _targetReference.Init(this);
-    }
 
-    private void Start()
-    {
-        RefreshCurrentNode();
+        if(_gridReference.IsInitialized)
+            RefreshCurrentNode();
+        else
+            _gridReference.SubscribeToInitialization(RefreshCurrentNode);
     }
 
     private void OnDestroy()
@@ -66,6 +66,8 @@ public class PathFindingTarget : MonoBehaviour
     [ContextMenu("Refresh Current Node")]
     public void RefreshCurrentNode()
     {
+        _gridReference.UnsubscribeFromInitialization(RefreshCurrentNode);
+
         var gridNodes = _gridReference.Nodes;
         float closestNodeSqrDistance = Mathf.Infinity;
         foreach (var node in gridNodes)

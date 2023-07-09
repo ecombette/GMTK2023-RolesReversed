@@ -598,7 +598,7 @@ PrefabInstance:
     - target: {fileID: 6050542085273047515, guid: d290b04cd37385c4ab883f1b189f5566, type: 3}
       propertyPath: _currentNode
       value: 
-      objectReference: {fileID: 1608324094}
+      objectReference: {fileID: 1036811698}
     - target: {fileID: 6191889018457561335, guid: d290b04cd37385c4ab883f1b189f5566, type: 3}
       propertyPath: m_Name
       value: PFB_Enemy
@@ -2227,7 +2227,7 @@ PrefabInstance:
     - target: {fileID: 7347196903768541828, guid: d266a785125f281459f9459a6685b629, type: 3}
       propertyPath: _currentNode
       value: 
-      objectReference: {fileID: 1780797920}
+      objectReference: {fileID: 1347582765}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d266a785125f281459f9459a6685b629, type: 3}
 --- !u!4 &616861042 stripped

@@ -55,6 +55,7 @@ MonoBehaviour:
   - -0.75
   - -0.6
   - 0
+  _startState: 0
   _movementDuration: 0.5
   _movementCurve:
     serializedVersion: 2
@@ -69,17 +70,17 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.6100064
-      value: 0.2197992
-      inSlope: 0.76122886
-      outSlope: 0.76122886
+      time: 0.3022672
+      value: 0.080881454
+      inSlope: 0.9741897
+      outSlope: 0.9741897
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0.9495039
+      outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.7898921
-      value: 0.904518
+      time: 0.6982254
+      value: 0.8901069
       inSlope: 2.8404362
       outSlope: 2.8404362
       tangentMode: 0
@@ -98,7 +99,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _triggerEnablingThreshold: 0.1
+  _triggerEnablingThreshold: 0.5
 --- !u!114 &3345348121026612597
 MonoBehaviour:
   m_ObjectHideFlags: 0

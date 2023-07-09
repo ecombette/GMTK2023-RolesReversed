@@ -22,7 +22,7 @@ public class GridPathfindingAgent : MonoBehaviour
     public bool IsTargetNode(Node node)
         => node != null && _currentTarget != null && _currentTarget.CurrentNode == node;
 
-    private void Start()
+    private void Awake()
     {
         RefreshCurrentNode();
     }

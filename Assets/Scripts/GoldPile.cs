@@ -9,6 +9,12 @@ public class GoldPile : MonoBehaviour
     public bool IsPickedUp => _isPickedUp;
     public UnityAction OnPickedUp;
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(!_isPickedUp && other.CompareTag("Player"))
+            PickUp();
+    }
+
     public void Init()
     {
         _isPickedUp = false;

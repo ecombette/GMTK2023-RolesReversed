@@ -16,7 +16,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] float _movementSpeed = 5f;
     [SerializeField] AnimationCurve _movementCurve;
     [SerializeField] AnimationCurve _movementYCurve;
-
+    [SerializeField] AnimationCurve _rotationYCurve;
     [SerializeField] AnimationCurve _scaleCurveX;
     [SerializeField] AnimationCurve _scaleCurveY;
     [SerializeField] AnimationCurve _scaleCurveZ;
@@ -61,15 +61,17 @@ public class EnemyController : MonoBehaviour
     [ContextMenu("Next Move")]
     public void NextMove()
     {
-        move(_pathfindingManager.GetNextPosition());
+        move(_pathfindingManager.GetNextPosition(), _pathfindingManager.PeekNextPosition());
     }
 
-    private void move(Vector3 nextPosition)
+    private void move(Vector3 nextPosition, Vector3 nextPrediction)
     {
         playSound(_kinghtMoveClip, Random.Range(_pitchRandom.x, _pitchRandom.y));
 
         Vector3 startPos = transform.position;
-        Vector3 targetPos = nextPosition;
+        Quaternion startRotation = transform.rotation;
+        Vector3 targetForward = nextPrediction == nextPosition ? nextPosition - startPos :  nextPrediction - nextPosition;
+        Quaternion targetRotation = Quaternion.LookRotation(targetForward);
 
         StartCoroutine(lerpMovement());
         IEnumerator lerpMovement()
@@ -80,9 +82,13 @@ public class EnemyController : MonoBehaviour
             {
                 t += Time.deltaTime * _movementSpeed;
 
-                transform.position = Vector3.Lerp(startPos, new Vector3(targetPos.x, _movementYCurve.Evaluate(t), targetPos.z), _movementCurve.Evaluate(t));
+                transform.position = Vector3.Lerp(startPos, new Vector3(nextPosition.x, _movementYCurve.Evaluate(t), nextPosition.z), _movementCurve.Evaluate(t));
+                transform.rotation = Quaternion.Lerp(startRotation, targetRotation, _rotationYCurve.Evaluate(t));
                 yield return null;
             }
+
+            transform.position = nextPosition;
+            transform.rotation = targetRotation;
 
             if (_lerpScaleCoroutine != null)
                 StopCoroutine(_lerpScaleCoroutine);

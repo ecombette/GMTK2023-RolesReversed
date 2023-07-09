@@ -305,6 +305,7 @@ GameObject:
   - component: {fileID: 394968453964344922}
   - component: {fileID: 7367333399166067681}
   - component: {fileID: 6529927876614821359}
+  - component: {fileID: 4092215570130995584}
   m_Layer: 0
   m_Name: PFB_Gold_01
   m_TagString: Untagged
@@ -421,6 +422,19 @@ MonoBehaviour:
   _goldParticlePickedUP: {fileID: 89017898288906803}
   _source: {fileID: 3648001755235705551}
   _goldPickedUpClip: {fileID: 8300000, guid: ef6ab16ea83fab54692bc34bc583cfe8, type: 3}
+--- !u!135 &4092215570130995584
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8433974274826187750}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.3
+  m_Center: {x: 0, y: 0.1, z: 0}
 --- !u!1 &9200726783224700670
 GameObject:
   m_ObjectHideFlags: 0

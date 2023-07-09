@@ -97,6 +97,27 @@ public class GridPathfindingAgent : MonoBehaviour
         return _currentNode.transform.position;
     }
 
+    public Vector3 PeekNextPosition()
+    {
+        if (_currentNode == null)
+        {
+            Logger.LogError("No current node set, can't get next position");
+            return transform.position;
+        }
+        if (!_currentPath.TryGetValue(_currentNode, out Node nextNode))
+        {
+            Logger.LogError("Current node not in current path, can't get next position");
+            return _currentNode.transform.position;
+        }
+        if (nextNode == null)
+        {
+            Logger.LogError("Empty next node, can't peek next position");
+            return _currentNode.transform.position;
+        }
+
+        return nextNode.transform.position;
+    }
+
     private float heuristic(Node nodeA, Node nodeB)
     {
         // Using a Manhattan distance heuristic here because the agent

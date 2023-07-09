@@ -11,6 +11,8 @@ public class Spike : MonoBehaviour
     [Header("Animation")]
     [SerializeField] Transform _spike;
     [SerializeField] List<float> _yPos;
+    [SerializeField]
+    private int _startState = 0;
     [SerializeField][Range(0f, 1f)]
     private float _movementDuration = .5f;
     [SerializeField]
@@ -33,6 +35,16 @@ public class Spike : MonoBehaviour
                 targetReference.OnTargetMoveAttempt += NextMove;
             }
         }
+
+        _currentState = _startState;
+        setCurrentStatePosition();
+    }
+
+    private void setCurrentStatePosition()
+    {
+        var currentPosition = _spike.position;
+        currentPosition.y = _yPos[_currentState];
+        _spike.position = currentPosition;
     }
 
     public void NextMove()

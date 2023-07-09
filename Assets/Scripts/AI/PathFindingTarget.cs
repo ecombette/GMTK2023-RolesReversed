@@ -25,6 +25,11 @@ public class PathFindingTarget : MonoBehaviour
         _targetReference.Init(this);
     }
 
+    private void Start()
+    {
+        RefreshCurrentNode();
+    }
+
     private void OnDestroy()
     {
         _targetReference.ResetTarget();
@@ -58,9 +63,8 @@ public class PathFindingTarget : MonoBehaviour
         return true;
     }
 
-#if UNITY_EDITOR
     [ContextMenu("Refresh Current Node")]
-    public void EditorRefreshCurrentNode()
+    public void RefreshCurrentNode()
     {
         var gridNodes = _gridReference.Nodes;
         float closestNodeSqrDistance = Mathf.Infinity;
@@ -74,7 +78,8 @@ public class PathFindingTarget : MonoBehaviour
             }
         }
 
+#if UNITY_EDITOR
         UnityEditor.EditorUtility.SetDirty(this);
-    }
 #endif
+    }
 }

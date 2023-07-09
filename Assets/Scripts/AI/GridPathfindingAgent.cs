@@ -22,6 +22,11 @@ public class GridPathfindingAgent : MonoBehaviour
     public bool IsTargetNode(Node node)
         => node != null && _currentTarget != null && _currentTarget.CurrentNode == node;
 
+    private void Start()
+    {
+        RefreshCurrentNode();
+    }
+
     public void FindPath(PathFindingTargetReference targetReference)
     {
         if(targetReference == null || targetReference.Reference == null)
@@ -79,7 +84,7 @@ public class GridPathfindingAgent : MonoBehaviour
             }
         }
 #if UNITY_EDITOR
-        editorDisplayPath(); 
+        displayPath(); 
 #endif
     }
 
@@ -157,9 +162,8 @@ public class GridPathfindingAgent : MonoBehaviour
         return Mathf.Abs(positionA.x - positionB.x) + Mathf.Abs(positionA.y - positionB.y);
     }
 
-#if UNITY_EDITOR
     [ContextMenu("Refresh Current Node")]
-    public void EditorRefreshCurrentNode()
+    public void RefreshCurrentNode()
     {
         var gridNodes = _gridReference.Nodes;
         float closestNodeSqrDistance = Mathf.Infinity;
@@ -172,17 +176,18 @@ public class GridPathfindingAgent : MonoBehaviour
                 closestNodeSqrDistance = nodeSqrDistance;
             }
         }
-
+#if UNITY_EDITOR
         UnityEditor.EditorUtility.SetDirty(this);
+#endif
     }
 
-    private void editorDisplayPath()
+    private void displayPath()
     {
         _gridReference.Reference.ResetNodesSelection();
 
         var targetNode = _currentTarget.CurrentNode;
         Node currentDisplayNode = _currentNode;
-        Node nextNode = null;
+        Node nextNode;
         while (_currentPath.TryGetValue(currentDisplayNode, out nextNode))
         {
             currentDisplayNode = nextNode;
@@ -196,5 +201,4 @@ public class GridPathfindingAgent : MonoBehaviour
             }
         }
     }
-#endif
 }

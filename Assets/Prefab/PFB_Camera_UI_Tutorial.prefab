@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8522058505224551538}
   - component: {fileID: 8410406901922317117}
-  - component: {fileID: 647361209205910550}
   - component: {fileID: 5642055905547395627}
   m_Layer: 5
   m_Name: PFB_Camera_UI_Tutorial
@@ -78,14 +77,6 @@ Camera:
   m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &647361209205910550
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 211147374085887274}
-  m_Enabled: 1
 --- !u!114 &5642055905547395627
 MonoBehaviour:
   m_ObjectHideFlags: 0

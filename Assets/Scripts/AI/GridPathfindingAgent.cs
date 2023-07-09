@@ -14,6 +14,11 @@ public class GridPathfindingAgent : MonoBehaviour
     private readonly Dictionary<Node, int> _costSoFar = new Dictionary<Node, int>();
     private readonly Dictionary<Node, Node> _currentPath = new Dictionary<Node, Node>();
 
+    public bool NextPositionIsTarget => 
+        _currentTarget != null && _currentTarget.CurrentNode != null
+        && _currentPath.TryGetValue(_currentNode, out Node nextNode)
+        && nextNode == _currentTarget.CurrentNode;
+
     public void FindPath(PathFindingTargetReference targetReference)
     {
         if(targetReference == null || targetReference.Reference == null)

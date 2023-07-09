@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ChestController : MonoBehaviour
 {
+    [SerializeField]
+    private Collider _chestTrigger;
+
     [Header("Input")]
     [SerializeField]
     [Range(0.1f, 1f)]
@@ -49,6 +52,22 @@ public class ChestController : MonoBehaviour
             _animator.SetFloat(HASH_UP, 1);
     }
 
+    private void Start()
+    {
+        var gameManager = GameManager.Instance;
+        if (gameManager != null)
+        {
+            gameManager.SubscribeToLevelCompleted(() =>
+            {
+                _chestTrigger.enabled = false;
+                enabled = false;
+            });
+            gameManager.SubscribeToGameOver(KillChest);
+        }
+        else
+            Logger.LogError("No game manager found, chest can't subscribe to game events", this);
+    }
+
     private void Update()
     {
         if (_movementTimer <= 0f)
@@ -75,21 +94,21 @@ public class ChestController : MonoBehaviour
                 _movementTimer = _movementCooldown;
             }
 
-            if (direction != Direction.NONE)
-            {
-                if (_aiTargetManager)
-                {
-                    if (_aiTargetManager.TryTargetMove(direction))
-                        move(direction);
-                    else
-                        cantMove();
-                }
-                else
-                    move(direction);
-            }
+            tryToMove(direction);
         }
         else
             _movementTimer -= Time.deltaTime;
+    }
+
+    private void tryToMove(Direction direction)
+    {
+        if (direction == Direction.NONE)
+            return;
+
+        if (_aiTargetManager == null || _aiTargetManager.TryTargetMove(direction))
+            move(direction);
+        else
+            cantMove();
     }
 
     private void move(Direction direction)
@@ -176,4 +195,30 @@ public class ChestController : MonoBehaviour
             _source.Play();
         }
     }
+
+#if UNITY_EDITOR
+    [ContextMenu("Simulate LEFT")]
+    private void editorSimulateLeft()
+    {
+        tryToMove(Direction.LEFT);
+    }
+
+    [ContextMenu("Simulate RIGHT")]
+    private void editorSimulateRight()
+    {
+        tryToMove(Direction.RIGHT);
+    }
+
+    [ContextMenu("Simulate UP")]
+    private void editorSimulateUp()
+    {
+        tryToMove(Direction.UP);
+    }
+
+    [ContextMenu("Simulate DOWN")]
+    private void editorSimulateDown()
+    {
+        tryToMove(Direction.DOWN);
+    }
+#endif
 }

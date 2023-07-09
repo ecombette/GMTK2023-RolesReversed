@@ -81,7 +81,7 @@ public class EnemyController : MonoBehaviour
         if(_pathfindingManager.IsTargetNode(nextNode))
         {
             // If the knight is facing the target node, do not move
-            if (Mathf.Abs(Vector3.Dot(transform.forward, nextNode.transform.position - transform.position)) > 0.1f)
+            if (Vector3.Dot(transform.forward, nextNode.transform.position - transform.position) > 0.9f)
                 return;
 
             move(transform.position, nextNode.transform.position);

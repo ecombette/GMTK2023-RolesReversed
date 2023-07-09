@@ -686,6 +686,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 884614099370214993, guid: d290b04cd37385c4ab883f1b189f5566, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.318
+      objectReference: {fileID: 0}
+    - target: {fileID: 884614099370214993, guid: d290b04cd37385c4ab883f1b189f5566, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.397
+      objectReference: {fileID: 0}
+    - target: {fileID: 884614099370214993, guid: d290b04cd37385c4ab883f1b189f5566, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.77428424
+      objectReference: {fileID: 0}
+    - target: {fileID: 884614099370214993, guid: d290b04cd37385c4ab883f1b189f5566, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.6328381
+      objectReference: {fileID: 0}
+    - target: {fileID: 884614099370214993, guid: d290b04cd37385c4ab883f1b189f5566, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 78.52
+      objectReference: {fileID: 0}
     - target: {fileID: 886880516049183630, guid: d290b04cd37385c4ab883f1b189f5566, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -737,6 +757,14 @@ PrefabInstance:
     - target: {fileID: 6191889018457561335, guid: d290b04cd37385c4ab883f1b189f5566, type: 3}
       propertyPath: m_Name
       value: PFB_Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6317776923117307149, guid: d290b04cd37385c4ab883f1b189f5566, type: 3}
+      propertyPath: m_Intensity
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6317776923117307149, guid: d290b04cd37385c4ab883f1b189f5566, type: 3}
+      propertyPath: m_SpotAngle
+      value: 53.131237
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d290b04cd37385c4ab883f1b189f5566, type: 3}
@@ -4801,7 +4829,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "The blue knight\n is trying to loot you !\n\nAvoid him !"
+  m_text: "Avoid getting caught by \nadventurers\n\nThey are coming to get you !"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dde1b265bf67f6744a359acf434ef9ba, type: 2}
   m_sharedMaterial: {fileID: 1143161495243258155, guid: dde1b265bf67f6744a359acf434ef9ba, type: 2}

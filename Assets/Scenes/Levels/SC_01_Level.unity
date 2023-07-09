@@ -3739,14 +3739,18 @@ PrefabInstance:
       propertyPath: _canvasTutorial
       value: 
       objectReference: {fileID: 898431486}
+    - target: {fileID: 2226637249862821794, guid: b2fd33160c1fc364a8aeb24e61cb64e1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226637249862821794, guid: b2fd33160c1fc364a8aeb24e61cb64e1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -120
+      objectReference: {fileID: 0}
     - target: {fileID: 3508029976684014808, guid: b2fd33160c1fc364a8aeb24e61cb64e1, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1025338194}
-    - target: {fileID: 3508029976684014809, guid: b2fd33160c1fc364a8aeb24e61cb64e1, type: 3}
-      propertyPath: m_MatchWidthOrHeight
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3508029976684014812, guid: b2fd33160c1fc364a8aeb24e61cb64e1, type: 3}
       propertyPath: m_IsActive
       value: 1

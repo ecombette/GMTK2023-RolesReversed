@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private UnityEvent<int> _onStartLoadingScene, _onSceneLoaded;
 
     private UnityAction _onLevelCompleted, _onGameOver;
+    public UnityAction<bool> InLevelLoadingMenu;
 
     public void Awake()
     {
@@ -150,6 +151,11 @@ public class GameManager : MonoBehaviour
     public void EditorRefreshLevelsList()
     {
         _levelList.EditorRefreshLevelsList();
+    }
+
+    public void IsInLevelLoadingMenu(bool state)
+    {
+        InLevelLoadingMenu?.Invoke(state);
     }
 
     public void QuitApp()

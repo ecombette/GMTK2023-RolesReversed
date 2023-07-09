@@ -306,7 +306,7 @@ GameObject:
   - component: {fileID: 7367333399166067681}
   - component: {fileID: 6529927876614821359}
   - component: {fileID: 4092215570130995584}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PFB_Gold_01
   m_TagString: GoldPile
   m_Icon: {fileID: 0}

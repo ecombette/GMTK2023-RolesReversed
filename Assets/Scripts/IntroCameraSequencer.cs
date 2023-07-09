@@ -8,7 +8,7 @@ public class IntroCameraSequencer : MonoBehaviour
     CameraFollowPlayer _cameraFollowPlayer;
     [SerializeField] UICanvasInGame _canvasInGame;
 
-    [SerializeField] GameObject _canvasTutorial;
+    [SerializeField] CanvasFadeIn _canvasTutorial;
 
     private void OnEnable()
     {
@@ -34,7 +34,7 @@ public class IntroCameraSequencer : MonoBehaviour
             }
 
             if (_canvasTutorial)
-                _canvasTutorial.SetActive(true);
+                _canvasTutorial.FadeIn();
         }
     }
 }

@@ -1806,17 +1806,6 @@ PrefabInstance:
       objectReference: {fileID: 1036811698}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d266a785125f281459f9459a6685b629, type: 3}
---- !u!114 &615704190 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7019725412394063862, guid: d266a785125f281459f9459a6685b629, type: 3}
-  m_PrefabInstance: {fileID: 615704189}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32dc7363f64592743a7e43beb117d398, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &627639125 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5203896693342388269, guid: 5cb58f2c73807f04f9965852c2481efb, type: 3}
@@ -1996,7 +1985,6 @@ MonoBehaviour:
   OnAllPilesPickedUp:
     m_PersistentCalls:
       m_Calls: []
-  chestController: {fileID: 615704190}
 --- !u!1001 &667129467
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3347,13 +3335,14 @@ GameObject:
   - component: {fileID: 1235997102}
   - component: {fileID: 1235997101}
   - component: {fileID: 1235997100}
+  - component: {fileID: 1235997104}
   m_Layer: 5
   m_Name: Canvas_Tutorial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1235997100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3437,6 +3426,21 @@ RectTransform:
   m_AnchoredPosition: {x: -0.7, y: 1.56}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1235997104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1235997099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15f3feac03f43d04aa5e9524167aca65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _images: []
+  _text:
+  - {fileID: 1761090835}
 --- !u!114 &1244573432 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1923141080023482255, guid: fef83573e4f2a0f4aaebabfeb2acd1d2, type: 3}
@@ -3806,7 +3810,7 @@ PrefabInstance:
     - target: {fileID: 66169515723328655, guid: b2fd33160c1fc364a8aeb24e61cb64e1, type: 3}
       propertyPath: _canvasTutorial
       value: 
-      objectReference: {fileID: 1235997099}
+      objectReference: {fileID: 1235997104}
     - target: {fileID: 3508029976684014808, guid: b2fd33160c1fc364a8aeb24e61cb64e1, type: 3}
       propertyPath: m_Camera
       value: 
@@ -4806,8 +4810,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 16777215
+  m_fontColor: {r: 1, g: 1, b: 1, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

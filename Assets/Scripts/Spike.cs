@@ -6,10 +6,19 @@ public class Spike : MonoBehaviour
 {
     [SerializeField] Node _node;
     [SerializeField] private PathFindingTargetReference _target;
+    [SerializeField] Collider _playerDetectionCollider;
+
+    [Header("Animation")]
     [SerializeField] Transform _spike;
     [SerializeField] List<float> _yPos;
+    [SerializeField][Range(0f, 1f)]
+    private float _movementDuration = .5f;
+    [SerializeField]
+    private AnimationCurve _movementCurve;
+    [SerializeField][Range(0f, 1f)]
+    private float _triggerEnablingThreshold = .5f;
+
     int _currentState = 0;
-    [SerializeField] Collider _playerDetectionCollider;
 
     private void Start()
     {
@@ -28,31 +37,59 @@ public class Spike : MonoBehaviour
 
     public void NextMove()
     {
-        float startYPos = _yPos[_currentState];
+        _playerDetectionCollider.enabled = false;
 
-        _currentState++;
+        var startPos = _spike.position;
+        startPos.y = _yPos[_currentState++];
+
         if (_currentState >= _yPos.Count)
             _currentState = 0;
 
-        float endYPos = _yPos[_currentState];
+        var endPos = startPos;
+        endPos.y = _yPos[_currentState];
+        _node.UpdateCost(_currentState == 0 ? 1 : 50);
 
-        if (_currentState != 0)
-            _node.UpdateCost(50);
+        if (_currentState == _yPos.Count - 1)
+            StartCoroutine(lerpDeadlySpike());
         else
-            _node.UpdateCost(1);
+            StartCoroutine(lerpSpike());
 
-        StartCoroutine(lerpSpike());
         IEnumerator lerpSpike()
         {
             float t = 0f;
+            while (t < 1f)
+            {
+                t += Time.deltaTime / _movementDuration;
+
+                _spike.position = Vector3.Lerp(startPos, endPos, _movementCurve.Evaluate(t));
+                yield return null;
+            }
+
+            _spike.position = endPos;
+        }
+
+        IEnumerator lerpDeadlySpike()
+        {
+            float t = 0f;
+            while (t < _triggerEnablingThreshold)
+            {
+                t += Time.deltaTime / _movementDuration;
+                _spike.position = Vector3.Lerp(startPos, endPos, _movementCurve.Evaluate(t));
+
+                yield return null;
+            }
+
+            _playerDetectionCollider.enabled = true;
 
             while (t < 1f)
             {
-                t += Time.deltaTime;
+                t += Time.deltaTime / _movementDuration;
+                _spike.position = Vector3.Lerp(startPos, endPos, _movementCurve.Evaluate(t));
 
-                _spike.position = new Vector3(_spike.position.x, _yPos[_currentState], _spike.position.z);
                 yield return null;
             }
+
+            _spike.position = endPos;
         }
     }
 

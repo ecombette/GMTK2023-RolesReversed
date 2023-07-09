@@ -108,7 +108,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2262342666124117346}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -237,7 +237,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2543647250098333623}
   m_LocalRotation: {x: 0.96763945, y: -0.0013342258, z: 0.00034792797, w: 0.25233313}
-  m_LocalPosition: {x: 0, y: 0.521, z: 0.253}
+  m_LocalPosition: {x: 0, y: 0.521, z: -0.24700001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -437,7 +437,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4722463463584895483}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -591,6 +591,7 @@ GameObject:
   - component: {fileID: 7947518723221247461}
   - component: {fileID: 556220018592288672}
   - component: {fileID: 148479580926548436}
+  - component: {fileID: 6451927225687631938}
   m_Layer: 0
   m_Name: PFB_Wall_Door
   m_TagString: Untagged
@@ -656,6 +657,33 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6451927225687631938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5432625082709577622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8120245176b6c154bbbd0341ca6440a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gridReference: {fileID: 11400000, guid: 885bb826d098efe4fb75b19ee05841af, type: 2}
+  _nodeCost: 1
+  _neighbours: []
+  _directionalNeighbourhood:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _searchRadius: 1.1
+  _onNodeSelected:
+    m_PersistentCalls:
+      m_Calls: []
+  _onNodeUnselected:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8076580863924893458
 GameObject:
   m_ObjectHideFlags: 0
@@ -836,7 +864,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5115574237034269482, guid: 4b4e902ef3e8fa44ba1f9266596a62b2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.289
+      value: -0.211
       objectReference: {fileID: 0}
     - target: {fileID: 5115574237034269482, guid: 4b4e902ef3e8fa44ba1f9266596a62b2, type: 3}
       propertyPath: m_LocalRotation.w

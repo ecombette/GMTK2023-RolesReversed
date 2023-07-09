@@ -120,7 +120,7 @@ public class GameManager : MonoBehaviour
 
         if (Application.isPlaying)
         {
-            _levelList.CurrentLevelIndex = levelIndex;
+            _levelList.SetCurrentLevelIndex(levelIndex);
             Logger.Log($"Loading level #{_levelList.CurrentLevelIndex}/{_levelList.LevelCount}");
 
             StartCoroutine(loadScene());

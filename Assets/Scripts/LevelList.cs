@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -10,8 +12,10 @@ public class LevelList : ScriptableObject
     [SerializeField] string[] _levels;
     [SerializeField] string _scenesFolderPath = "Assets/Scenes";
 
-    public int CurrentLevelIndex = 0;
+    [NonSerialized]
+    private int _currentLevelIndex = 0;
 
+    public int CurrentLevelIndex => _currentLevelIndex;
     public int LevelCount => _levels.Length;
     public string ScenesFolderPath => _scenesFolderPath;
 
@@ -29,13 +33,18 @@ public class LevelList : ScriptableObject
         }
     }
 
+    public void SetCurrentLevelIndex(int levelIndex)
+    {
+        _currentLevelIndex = Mathf.Clamp(levelIndex, 0, LevelCount - 1);
+    }
+
 #if UNITY_EDITOR
     public void EditorTrySetCurrentLevel(string sceneName)
     {
         int levelIndex = System.Array.IndexOf(_levels, sceneName);
         if (levelIndex > 0)
-            CurrentLevelIndex = levelIndex;
-    } 
+            _currentLevelIndex = levelIndex;
+    }
 #endif
 
     [ContextMenu("Refresh Levels List")]

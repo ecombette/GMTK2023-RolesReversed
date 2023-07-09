@@ -2042,10 +2042,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 134074862385442496, guid: d266a785125f281459f9459a6685b629, type: 3}
-      propertyPath: _dieSFX
-      value: 
-      objectReference: {fileID: 8300000, guid: f068336c52d625b4fb6b49d6a6b0a9ad, type: 3}
     - target: {fileID: 7019725412394063861, guid: d266a785125f281459f9459a6685b629, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -7113,6 +7109,18 @@ PrefabInstance:
       propertyPath: _levelManager
       value: 
       objectReference: {fileID: 643218417}
+    - target: {fileID: 5028648691684030440, guid: 4d3f75ee1d145834a81d7ced5c2c3290, type: 3}
+      propertyPath: InitialModule.rotation3D
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5028648691684030440, guid: 4d3f75ee1d145834a81d7ced5c2c3290, type: 3}
+      propertyPath: InitialModule.startRotation.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5028648691684030440, guid: 4d3f75ee1d145834a81d7ced5c2c3290, type: 3}
+      propertyPath: InitialModule.startRotationY.scalar
+      value: -1.5707963
+      objectReference: {fileID: 0}
     - target: {fileID: 5432625082709577622, guid: 4d3f75ee1d145834a81d7ced5c2c3290, type: 3}
       propertyPath: m_Name
       value: PFB_Wall_Door_Exit
@@ -7175,6 +7183,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7947518723221247461, guid: 4d3f75ee1d145834a81d7ced5c2c3290, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8463267670878175860, guid: 4d3f75ee1d145834a81d7ced5c2c3290, type: 3}
+      propertyPath: m_Flip.x
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

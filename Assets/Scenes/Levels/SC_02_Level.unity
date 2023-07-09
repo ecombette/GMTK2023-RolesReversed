@@ -3791,6 +3791,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2434622920566924628, guid: 026d2c936e0182d4b9ef0e6d21895b4a, type: 3}
   m_PrefabInstance: {fileID: 1464005322}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1488798488 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7365169382349833690, guid: 4d3f75ee1d145834a81d7ced5c2c3290, type: 3}
+  m_PrefabInstance: {fileID: 7187496544800837337}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1506520051
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5863,6 +5868,18 @@ PrefabInstance:
       propertyPath: _levelManager
       value: 
       objectReference: {fileID: 643218417}
+    - target: {fileID: 5028648691684030440, guid: 4d3f75ee1d145834a81d7ced5c2c3290, type: 3}
+      propertyPath: InitialModule.rotation3D
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5028648691684030440, guid: 4d3f75ee1d145834a81d7ced5c2c3290, type: 3}
+      propertyPath: InitialModule.startRotationY.scalar
+      value: -1.5707963
+      objectReference: {fileID: 0}
+    - target: {fileID: 5028648691684030440, guid: 4d3f75ee1d145834a81d7ced5c2c3290, type: 3}
+      propertyPath: CollisionModule.m_Planes.Array.data[0]
+      value: 
+      objectReference: {fileID: 1488798488}
     - target: {fileID: 5432625082709577622, guid: 4d3f75ee1d145834a81d7ced5c2c3290, type: 3}
       propertyPath: m_Name
       value: PFB_Wall_Door_Exit

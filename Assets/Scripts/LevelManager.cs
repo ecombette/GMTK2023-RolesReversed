@@ -18,6 +18,16 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        GameManager.Instance.SubscribeToGameOver(GameOver);
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.UnsubscribeFromGameOver(GameOver);
+    }
+
     private void onGoldPilePickedUp()
     {
         foreach (var goldPile in _goldPiles)
@@ -42,5 +52,10 @@ public class LevelManager : MonoBehaviour
             yield return new WaitForSeconds(1f);
             GameManager.Instance.LoadNextLevel();
         }
+    }
+
+    public void GameOver()
+    {
+        chestController.KillChest();
     }
 }

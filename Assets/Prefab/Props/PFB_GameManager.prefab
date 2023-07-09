@@ -177,6 +177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb177ae02a1cf5648aad09f6cd806f03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _delayBeforeReloading: 1
   _levelList: {fileID: 11400000, guid: d660a5b6b33503f47b5b730ff89377b5, type: 2}
   _canvasFade: {fileID: 4899729212215063424}
   _onStartLoadingScene:

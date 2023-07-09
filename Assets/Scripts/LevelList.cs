@@ -1,11 +1,65 @@
-using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [CreateAssetMenu(menuName = "LevelList", fileName = "LevelList")]
 public class LevelList : ScriptableObject
 {
-    public string[] _levels;
-    public string _scenesFolderPath = "Assets/Scenes";
-    public int _currentLevelIndex = 0;
+    [SerializeField] string[] _levels;
+    [SerializeField] string _scenesFolderPath = "Assets/Scenes";
+
+    public int CurrentLevelIndex = 0;
+
+    public int LevelCount => _levels.Length;
+    public string ScenesFolderPath => _scenesFolderPath;
+
+    public string this[int levelIndex]
+    {
+        get
+        {
+            if (levelIndex < 0 || levelIndex > _levels.Length)
+            {
+                Logger.LogError($"Trying to access level #{levelIndex} but there are only {_levels.Length} levels");
+                return string.Empty;
+            }
+
+            return _levels[levelIndex];
+        }
+    }
+
+#if UNITY_EDITOR
+    public void EditorTrySetCurrentLevel(string sceneName)
+    {
+        int levelIndex = System.Array.IndexOf(_levels, sceneName);
+        if (levelIndex > 0)
+            CurrentLevelIndex = levelIndex;
+    } 
+#endif
+
+    [ContextMenu("Refresh Levels List")]
+    public void EditorRefreshLevelsList()
+    {
+#if UNITY_EDITOR
+        List<EditorBuildSettingsScene> scenesToBuild = new List<EditorBuildSettingsScene>();
+
+        var sceneGuids = AssetDatabase.FindAssets("t:Scene", new[] { _scenesFolderPath });
+
+        _levels = new string[sceneGuids.Length];
+        for (int i = 0; i < sceneGuids.Length; i++)
+        {
+            var scenePath = AssetDatabase.GUIDToAssetPath(sceneGuids[i]);
+            EditorBuildSettingsScene scene = new EditorBuildSettingsScene();
+            scene.path = scenePath;
+            scene.enabled = true;
+            scenesToBuild.Add(scene);
+
+            _levels[i] = System.IO.Path.GetFileNameWithoutExtension(scenePath);
+        }
+
+        EditorBuildSettings.scenes = scenesToBuild.ToArray();
+        EditorUtility.SetDirty(this);
+#endif
+    }
 }

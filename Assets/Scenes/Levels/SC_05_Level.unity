@@ -3210,6 +3210,11 @@ PrefabInstance:
     - {fileID: 556220018592288672, guid: 4d3f75ee1d145834a81d7ced5c2c3290, type: 3}
     - {fileID: 6451927225687631938, guid: 4d3f75ee1d145834a81d7ced5c2c3290, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4d3f75ee1d145834a81d7ced5c2c3290, type: 3}
+--- !u!4 &743823465 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7019725412394063861, guid: d266a785125f281459f9459a6685b629, type: 3}
+  m_PrefabInstance: {fileID: 615704189}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &785623715
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5319,11 +5324,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 7947518723221247461, guid: e44a53bd5b92d8545b5d39800e55559f, type: 3}
   m_PrefabInstance: {fileID: 1429443520}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1457955252 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7019725412394063861, guid: d266a785125f281459f9459a6685b629, type: 3}
-  m_PrefabInstance: {fileID: 615704189}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1461595737
 PrefabInstance:
@@ -7911,43 +7911,7 @@ PrefabInstance:
     - target: {fileID: 6367771948405917204, guid: f2815179de1f6e24e8352d6dd8e1e93a, type: 3}
       propertyPath: _player
       value: 
-      objectReference: {fileID: 1457955252}
-    - target: {fileID: 6367771948405917204, guid: f2815179de1f6e24e8352d6dd8e1e93a, type: 3}
-      propertyPath: _orthoSizeToPlayer
-      value: 2.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 6367771948405917204, guid: f2815179de1f6e24e8352d6dd8e1e93a, type: 3}
-      propertyPath: _zoomAnimationCurve.m_Curve.Array.data[0].value
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6367771948405917204, guid: f2815179de1f6e24e8352d6dd8e1e93a, type: 3}
-      propertyPath: _zoomAnimationCurve.m_Curve.Array.data[1].value
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6367771948405917204, guid: f2815179de1f6e24e8352d6dd8e1e93a, type: 3}
-      propertyPath: _zoomAnimationCurve.m_Curve.Array.data[0].inSlope
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6367771948405917204, guid: f2815179de1f6e24e8352d6dd8e1e93a, type: 3}
-      propertyPath: _zoomAnimationCurve.m_Curve.Array.data[1].inSlope
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6367771948405917204, guid: f2815179de1f6e24e8352d6dd8e1e93a, type: 3}
-      propertyPath: _zoomAnimationCurve.m_Curve.Array.data[0].outSlope
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6367771948405917204, guid: f2815179de1f6e24e8352d6dd8e1e93a, type: 3}
-      propertyPath: _zoomAnimationCurve.m_Curve.Array.data[1].inWeight
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6367771948405917204, guid: f2815179de1f6e24e8352d6dd8e1e93a, type: 3}
-      propertyPath: _zoomAnimationCurve.m_Curve.Array.data[1].outSlope
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6367771948405917204, guid: f2815179de1f6e24e8352d6dd8e1e93a, type: 3}
-      propertyPath: _zoomAnimationCurve.m_Curve.Array.data[0].outWeight
-      value: 0
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 743823465}
     - target: {fileID: 6388080933315912705, guid: f2815179de1f6e24e8352d6dd8e1e93a, type: 3}
       propertyPath: m_Name
       value: PFB_Camera

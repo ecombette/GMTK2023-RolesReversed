@@ -36,25 +36,26 @@ public class PathFindingTarget : MonoBehaviour
         OnTargetMoveAttempt = null;
     }
 
-    public void SetTargetMove(Direction direction)
+    public bool TryTargetMove(Direction direction)
     {
         if(_currentNode == null)
         {
             Logger.LogWarning("No current node, can't move");
-            return;
+            OnTargetMoveAttempt?.Invoke();
+            return false;
         }
 
         var nextNode = _currentNode.GetNeighbour(direction);
         if(nextNode == null)
         {
             Logger.Log($"Node {_currentNode} neighbouring node to its {direction}, won't move");
-            //TODO: boink contre un obstacle :)
             OnTargetMoveAttempt?.Invoke();
-            return;
+            return false;
         }
         
         _currentNode = nextNode;
         OnTargetMoved?.Invoke();
+        return true;
     }
 
 #if UNITY_EDITOR

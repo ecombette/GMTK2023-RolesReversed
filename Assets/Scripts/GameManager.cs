@@ -80,6 +80,11 @@ public class GameManager : MonoBehaviour
 #endif
     }
 
+    public void GameOver()
+    {
+        LoadCurrentLevel();
+    }
+
 #if UNITY_EDITOR
     [ContextMenu("Refresh Levels List")]
     public void EditorRefreshLevelsList()

@@ -8,6 +8,8 @@ public class EnemyController : MonoBehaviour
     private GridPathfindingAgent _pathfindingManager;
     [SerializeField]
     private PathFindingTargetReference _target;
+    [SerializeField]
+    private Collider _playerDetectionCollider;
 
     [Header("Animations")]
     [SerializeField] Animator _animator;
@@ -48,8 +50,17 @@ public class EnemyController : MonoBehaviour
 
     private void OnDestroy()
     {
-        if(_target)
+        if (_target)
             _target.ResetTarget();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Player"))
+        {
+            Attack();
+            _playerDetectionCollider.enabled = false;
+        }
     }
 
     [ContextMenu("Update Path")]
@@ -61,6 +72,9 @@ public class EnemyController : MonoBehaviour
     [ContextMenu("Next Move")]
     public void NextMove()
     {
+        if (_pathfindingManager.NextPositionIsTarget)
+            return;
+
         move(_pathfindingManager.GetNextPosition(), _pathfindingManager.PeekNextPosition());
     }
 
@@ -76,8 +90,9 @@ public class EnemyController : MonoBehaviour
         StartCoroutine(lerpMovement());
         IEnumerator lerpMovement()
         {
-            float t = 0f;
+            _playerDetectionCollider.enabled = false;
 
+            float t = 0f;
             while (t < 1f)
             {
                 t += Time.deltaTime * _movementSpeed;
@@ -94,6 +109,8 @@ public class EnemyController : MonoBehaviour
                 StopCoroutine(_lerpScaleCoroutine);
 
             _lerpScaleCoroutine = StartCoroutine(lerpScale());
+
+            _playerDetectionCollider.enabled = true;
         }
     }
 
@@ -115,6 +132,7 @@ public class EnemyController : MonoBehaviour
     {
         playSound(_knightAttackClip, 1f);
         _animator.SetTrigger(HASH_ATTACK);
+        GameManager.Instance.GameOver();
     }
 
     private void playSound(AudioClip clip, float pitchValue)

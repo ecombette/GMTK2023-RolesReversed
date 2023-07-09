@@ -24,7 +24,13 @@ public class GridPathfindingAgent : MonoBehaviour
 
     private void Awake()
     {
-        RefreshCurrentNode();
+        if (_gridReference)
+        {
+            if (_gridReference.IsInitialized)
+                RefreshCurrentNode();
+            else
+                _gridReference.SubscribeToInitialization(RefreshCurrentNode);
+        }
     }
 
     public void FindPath(PathFindingTargetReference targetReference)
@@ -165,6 +171,8 @@ public class GridPathfindingAgent : MonoBehaviour
     [ContextMenu("Refresh Current Node")]
     public void RefreshCurrentNode()
     {
+        _gridReference.UnsubscribeFromInitialization(RefreshCurrentNode);
+
         var gridNodes = _gridReference.Nodes;
         float closestNodeSqrDistance = Mathf.Infinity;
         foreach (var node in gridNodes)

@@ -590,6 +590,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7947518723221247461}
   - component: {fileID: 556220018592288672}
+  - component: {fileID: 8716638778485346833}
   - component: {fileID: 148479580926548436}
   - component: {fileID: 6451927225687631938}
   m_Layer: 0
@@ -631,11 +632,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelManager: {fileID: 0}
+  _onDoorUnlocked:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8716638778485346833}
+        m_TargetAssemblyTypeName: UnityEngine.Collider, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   _lock: {fileID: 1115977846774406556}
   _lockParticle: {fileID: 5028648691684030440}
   _doorAnimator: {fileID: 148479580926548436}
   _source: {fileID: 1007335072749630433}
   _doorOpenClip: {fileID: 8300000, guid: 6e44edc68b8b8644098ec939ae9c848d, type: 3}
+--- !u!135 &8716638778485346833
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5432625082709577622}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.3
+  m_Center: {x: 0, y: 0.25, z: -0.15}
 --- !u!95 &148479580926548436
 Animator:
   serializedVersion: 5

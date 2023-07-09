@@ -1,9 +1,12 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DoorManager : MonoBehaviour
 {
     [SerializeField] LevelManager _levelManager;
+    [SerializeField] UnityEvent _onDoorUnlocked;
+
     [Header("Lock")]
     [SerializeField] GameObject _lock;
     [SerializeField] ParticleSystem _lockParticle;
@@ -17,6 +20,17 @@ public class DoorManager : MonoBehaviour
     private void OnEnable()
     {
         _levelManager.OnAllPilesPickedUp.AddListener(unlockDoor);
+    }
+
+    private void OnDisable()
+    {
+        _levelManager.OnAllPilesPickedUp.RemoveListener(unlockDoor);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Player"))
+            _levelManager.OnDoorReached();
     }
 
     [ContextMenu("Unlock Door")]
@@ -37,19 +51,8 @@ public class DoorManager : MonoBehaviour
                 _source.clip = _doorOpenClip;
                 _source.Play();
             }
+
+            _onDoorUnlocked?.Invoke();
         }
-    }
-
-    [ContextMenu("Load Next Level")]
-    public void LoadNextLevel()
-    {
-        if (GameManager.Instance)
-            GameManager.Instance.LoadNextLevel();
-    }
-
-
-    private void OnDisable()
-    {
-        _levelManager.OnAllPilesPickedUp.RemoveListener(unlockDoor);
     }
 }

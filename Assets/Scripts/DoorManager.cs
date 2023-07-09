@@ -30,7 +30,7 @@ public class DoorManager : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))
-            _levelManager.OnDoorReached();
+            GameManager.Instance.LevelCompleted();
     }
 
     [ContextMenu("Unlock Door")]

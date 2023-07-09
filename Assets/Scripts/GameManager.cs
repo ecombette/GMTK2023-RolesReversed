@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     [SerializeField][Range(0f, 10f)]
+    private float _delayBeforeLoadNext = 1f;
+    [SerializeField][Range(0f, 10f)]
     private float _delayBeforeReloading = 1f;
 
     [Header("Levels")]
@@ -19,7 +21,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] UICanvasFade _canvasFade;
     [SerializeField] private UnityEvent<int> _onStartLoadingScene, _onSceneLoaded;
 
-    private UnityAction _onGameOver;
+    private UnityAction _onLevelCompleted, _onGameOver;
 
     public void Awake()
     {
@@ -30,6 +32,7 @@ public class GameManager : MonoBehaviour
 #endif
     }
 
+    [ContextMenu("Game Over")]
     public void GameOver()
     {
         _onGameOver?.Invoke();
@@ -54,6 +57,33 @@ public class GameManager : MonoBehaviour
     public void UnsubscribeFromGameOver(UnityAction onGameOver)
     {
         _onGameOver -= onGameOver;
+    }
+
+    [ContextMenu("Level Completed")]
+    public void LevelCompleted()
+    {
+        _onLevelCompleted?.Invoke();
+        StartCoroutine(delayedLoadNextCoroutine());
+
+        IEnumerator delayedLoadNextCoroutine()
+        {
+            if (_delayBeforeReloading > 0f)
+                yield return new WaitForSeconds(_delayBeforeLoadNext);
+            else
+                yield return null;
+
+            LoadNextLevel();
+        }
+    }
+
+    public void SubscribeToLevelCompleted(UnityAction onLevelCompleted)
+    {
+        _onLevelCompleted += onLevelCompleted;
+    }
+
+    public void UnsubscribeFromLevelCompleted(UnityAction onLevelCompleted)
+    {
+        _onLevelCompleted -= onLevelCompleted;
     }
 
     #region Level Loading

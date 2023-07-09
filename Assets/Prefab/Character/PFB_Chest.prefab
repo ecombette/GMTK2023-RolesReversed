@@ -289,6 +289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32dc7363f64592743a7e43beb117d398, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _chestTrigger: {fileID: 1735723544850361361}
   _inputSensitivity: 0.1
   _movementCooldown: 0.5
   _aiTargetManager: {fileID: 7347196903768541828}

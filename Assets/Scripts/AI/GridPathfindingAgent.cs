@@ -31,7 +31,7 @@ public class GridPathfindingAgent : MonoBehaviour
     {
         if(targetReference == null || targetReference.Reference == null)
         {
-            Logger.LogError("Trying to find path to empty target, aborting");
+            Logger.LogError($"[AI] Agent {gameObject.name} trying to find path to empty target, aborting");
             return;
         }
 
@@ -79,7 +79,7 @@ public class GridPathfindingAgent : MonoBehaviour
 
             if (currentPathNode == _currentNode)
             {
-                Logger.Log($"[AI] Start node found : {previousNode} => {_currentNode}");
+                Logger.Log($"[AI] Agent {gameObject.name} start node found : {_currentPath[previousNode]} => {_currentNode}");
                 break;
             }
         }
@@ -92,17 +92,17 @@ public class GridPathfindingAgent : MonoBehaviour
     {
         if (_currentNode == null)
         {
-            Logger.LogError("No current node set, can't get next node");
+            Logger.LogError($"[AI] Agent {gameObject.name} no current node set, can't get next node");
             return null;
         }
         if (!_currentPath.TryGetValue(_currentNode, out Node nextNode))
         {
-            Logger.LogError("Current node not in current path, can't get next node");
+            Logger.LogError($"[AI] Agent {gameObject.name} current node not in current path, can't get next node");
             return null;
         }
         if (nextNode == null)
         {
-            Logger.LogError("Empty next node, can't get next node");
+            Logger.LogError($"[AI] Agent {gameObject.name} empty next node, can't get next node");
             return null;
         }
 
@@ -120,12 +120,12 @@ public class GridPathfindingAgent : MonoBehaviour
     {
         if (_currentNode == null)
         {
-            Logger.LogError("No current node set, can't peek next node");
+            Logger.LogError($"[AI] Agent {gameObject.name} no current node set, can't peek next node");
             return null;
         }
         if (!_currentPath.TryGetValue(_currentNode, out Node nextNode))
         {
-            Logger.LogError("Current node not in current path, can't peek next node");
+            Logger.LogError($"[AI] Agent {gameObject.name} current node not in current path, can't peek next node");
             return null;
         }
 
@@ -136,17 +136,17 @@ public class GridPathfindingAgent : MonoBehaviour
     {
         if (_currentNode == null)
         {
-            Logger.LogError("No current node set, can't get next position");
+            Logger.LogError($"[AI] Agent {gameObject.name} no current node set, can't get next position");
             return transform.position;
         }
         if (!_currentPath.TryGetValue(_currentNode, out Node nextNode))
         {
-            Logger.LogError("Current node not in current path, can't get next position");
+            Logger.LogError($"[AI] Agent {gameObject.name} current node not in current path, can't get next position");
             return _currentNode.transform.position;
         }
         if (nextNode == null)
         {
-            Logger.LogError("Empty next node, can't peek next position");
+            Logger.LogError($"[AI] Agent {gameObject.name} empty next node, can't peek next position");
             return _currentNode.transform.position;
         }
 
@@ -195,7 +195,7 @@ public class GridPathfindingAgent : MonoBehaviour
 
             if (currentDisplayNode == _currentNode)
             {
-                Logger.Log($"[AI] End node found : {currentDisplayNode} => {targetNode}");
+                Logger.Log($"[AI] Agent {gameObject.name} end node found : {currentDisplayNode} => {targetNode}");
                 currentDisplayNode.SelectNode(true);
                 break;
             }

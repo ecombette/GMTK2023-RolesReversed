@@ -1753,6 +1753,17 @@ PrefabInstance:
       objectReference: {fileID: 1036811698}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d266a785125f281459f9459a6685b629, type: 3}
+--- !u!114 &615704190 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7019725412394063862, guid: d266a785125f281459f9459a6685b629, type: 3}
+  m_PrefabInstance: {fileID: 615704189}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32dc7363f64592743a7e43beb117d398, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &627639125 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5203896693342388269, guid: 5cb58f2c73807f04f9965852c2481efb, type: 3}
@@ -1932,6 +1943,7 @@ MonoBehaviour:
   OnAllPilesPickedUp:
     m_PersistentCalls:
       m_Calls: []
+  chestController: {fileID: 615704190}
 --- !u!1001 &667129467
 PrefabInstance:
   m_ObjectHideFlags: 0

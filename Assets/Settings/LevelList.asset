@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: LevelList
   m_EditorClassIdentifier: 
   _levels:
+  - SC_00_LoadingScreen
   - SC_01_Level
   - SC_02_Level
   - SC_03_Level
   - SC_96_End
-  - SC_97_StartScreen
   - SC_98_Level
   - SC_99_Level_Test
   _scenesFolderPath: Assets/Scenes/Levels
-  _currentLevelIndex: 2
+  _currentLevelIndex: 0

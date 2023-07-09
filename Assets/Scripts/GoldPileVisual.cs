@@ -18,6 +18,10 @@ public class GoldPileVisual : MonoBehaviour
     [SerializeField] GameObject _goldParticle;
     [SerializeField] ParticleSystem _goldParticlePickedUP;
 
+    [Header("Audio")]
+    [SerializeField] AudioSource _source;
+    [SerializeField] AudioClip _goldPickedUpClip;
+
     public void OnEnable()
     {
         _materials = new List<Material>();
@@ -67,6 +71,12 @@ public class GoldPileVisual : MonoBehaviour
         for (int i = 0; i < _renderers.Count; i++)
         {
             _renderers[i].gameObject.SetActive(false);
+        }
+
+        if (_source && _goldPickedUpClip)
+        {
+            _source.clip = _goldPickedUpClip;
+            _source.Play();
         }
     }
 

@@ -31,6 +31,13 @@ public class ChestController : MonoBehaviour
     [SerializeField] Animator _animator;
     static int HASH_UP = Animator.StringToHash("XAngle");
 
+    [Header("Audio")]
+    [SerializeField] AudioSource _source;
+    [SerializeField] AudioClip _moveSFX;
+    [SerializeField] AudioClip _cantMoveSFX;
+    [SerializeField] AudioClip _dieSFX;
+    [SerializeField] AudioClip _eatGoldSFX;
+
     private void OnEnable()
     {
         if (_animator)
@@ -69,6 +76,7 @@ public class ChestController : MonoBehaviour
     private void move(Direction direction)
     {
         _onMove?.Invoke(direction);
+        playSound(_moveSFX);
 
         Vector3 movement = DirectionUtility.GetDirectionalMovement(direction);
         Vector3 startPos = transform.position;
@@ -108,6 +116,8 @@ public class ChestController : MonoBehaviour
         if (_lerpScaleCoroutine != null)
             StopCoroutine(_lerpScaleCoroutine);
 
+        playSound(_cantMoveSFX);
+
         _lerpScaleCoroutine = StartCoroutine(lerpScale());
     }
 
@@ -122,5 +132,14 @@ public class ChestController : MonoBehaviour
             transform.localScale = new Vector3(_scaleCurveX.Evaluate(t), _scaleCurveY.Evaluate(t), _scaleCurveZ.Evaluate(t));
             yield return null;
         }
+    }
+
+    private void playSound(AudioClip clip)
+    {
+        if(_source && clip)
+        {
+            _source.clip = clip;
+            _source.Play();
+        }    
     }
 }

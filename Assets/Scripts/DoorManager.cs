@@ -10,6 +10,10 @@ public class DoorManager : MonoBehaviour
     [SerializeField] Animator _doorAnimator;
     static int HASH_DOOROPEN = Animator.StringToHash("Open");
 
+    [Header("Audio")]
+    [SerializeField] AudioSource _source;
+    [SerializeField] AudioClip _doorOpenClip;
+
     private void OnEnable()
     {
         _levelManager.OnAllPilesPickedUp.AddListener(unlockDoor);
@@ -27,6 +31,12 @@ public class DoorManager : MonoBehaviour
             _lock.SetActive(false);
             _lockParticle.Play();
             _doorAnimator.SetTrigger(HASH_DOOROPEN);
+
+            if(_source && _doorOpenClip)
+            {
+                _source.clip = _doorOpenClip;
+                _source.Play();
+            }
         }
     }
 

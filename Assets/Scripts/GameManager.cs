@@ -44,12 +44,12 @@ public class GameManager : MonoBehaviour
 
     public void LoadLevel(int levelIndex)
     {
-        if(levelIndex < 0)
+        if (levelIndex < 0)
         {
             levelIndex = 0;
             Logger.LogWarning($"Trying to load level with negative index ({levelIndex}), default to 0");
         }
-        else if(levelIndex >= _levelList._levels.Length)
+        else if (levelIndex >= _levelList._levels.Length)
         {
             Logger.LogWarning($"Trying to load out of bounds level ({levelIndex}), default to last ({_levelList._levels.Length - 1})");
             levelIndex = _levelList._levels.Length - 1;
@@ -64,7 +64,8 @@ public class GameManager : MonoBehaviour
 
             IEnumerator loadScene()
             {
-                _canvasFade.FadeOut();
+                if (_canvasFade)
+                    _canvasFade.FadeOut();
 
                 yield return new WaitForSeconds(0.35f);
 
@@ -88,7 +89,7 @@ public class GameManager : MonoBehaviour
         var sceneGuids = AssetDatabase.FindAssets("t:Scene", new[] { _levelList._scenesFolderPath });
 
         _levelList._levels = new string[sceneGuids.Length];
-        for(int i = 0; i < sceneGuids.Length; i++)
+        for (int i = 0; i < sceneGuids.Length; i++)
         {
             var scenePath = AssetDatabase.GUIDToAssetPath(sceneGuids[i]);
             EditorBuildSettingsScene scene = new EditorBuildSettingsScene();
@@ -101,7 +102,7 @@ public class GameManager : MonoBehaviour
 
         EditorBuildSettings.scenes = scenesToBuild.ToArray();
         EditorUtility.SetDirty(this);
-    } 
+    }
 #endif
 
     public void QuitApp()

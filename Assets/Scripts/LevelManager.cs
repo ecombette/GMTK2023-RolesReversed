@@ -39,7 +39,7 @@ public class LevelManager : MonoBehaviour
 
         IEnumerator delay()
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1f);
             GameManager.Instance.LoadNextLevel();
         }
     }

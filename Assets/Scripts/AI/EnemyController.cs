@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using GD.MinMaxSlider;
 
 public class EnemyController : MonoBehaviour
 {
@@ -10,9 +11,6 @@ public class EnemyController : MonoBehaviour
 
     [Header("Animations")]
     [SerializeField] Animator _animator;
-    [SerializeField] int _maxIdleState = 2;
-    static int HASH_STATE = Animator.StringToHash("State");
-    static int HASH_JUMP = Animator.StringToHash("Jump");
     static int HASH_ATTACK = Animator.StringToHash("Attack");
 
     [SerializeField] float _movementSpeed = 5f;
@@ -23,6 +21,12 @@ public class EnemyController : MonoBehaviour
     [SerializeField] AnimationCurve _scaleCurveY;
     [SerializeField] AnimationCurve _scaleCurveZ;
     Coroutine _lerpScaleCoroutine;
+
+    [Header("Audio")]
+    [SerializeField] AudioSource _source;
+    [SerializeField] AudioClip _kinghtMoveClip;
+    [SerializeField, MinMaxSlider(0f, 2f)] Vector2 _pitchRandom = new Vector2(-0.5f,0.5f);
+    [SerializeField] AudioClip _knightAttackClip;
 
     private void Start()
     {
@@ -62,6 +66,8 @@ public class EnemyController : MonoBehaviour
 
     private void move(Vector3 nextPosition)
     {
+        playSound(_kinghtMoveClip, Random.Range(_pitchRandom.x, _pitchRandom.y));
+
         Vector3 startPos = transform.position;
         Vector3 targetPos = nextPosition;
 
@@ -95,6 +101,23 @@ public class EnemyController : MonoBehaviour
 
             transform.localScale = new Vector3(_scaleCurveX.Evaluate(t), _scaleCurveY.Evaluate(t), _scaleCurveZ.Evaluate(t));
             yield return null;
+        }
+    }
+
+    [ContextMenu("Attack")]
+    public void Attack()
+    {
+        playSound(_knightAttackClip, 1f);
+        _animator.SetTrigger(HASH_ATTACK);
+    }
+
+    private void playSound(AudioClip clip, float pitchValue)
+    {
+        if (_source && clip)
+        {
+            _source.pitch = pitchValue;
+            _source.clip = clip;
+            _source.Play();
         }
     }
 }

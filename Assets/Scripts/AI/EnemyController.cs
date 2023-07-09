@@ -41,8 +41,7 @@ public class EnemyController : MonoBehaviour
             {
                 UpdatePath();
 
-                targetReference.OnTargetMoved += NextMove;
-                targetReference.OnTargetMoved += UpdatePath;
+                targetReference.OnTargetMoved += NextUpdatedMove;
                 targetReference.OnTargetMoveAttempt += NextMove;
             }
         }
@@ -89,6 +88,30 @@ public class EnemyController : MonoBehaviour
         }
 
         move(_pathfindingManager.GetNextPosition(), _pathfindingManager.PeekNextPosition());
+    }
+
+    public void NextUpdatedMove()
+    {
+        var nextNode = _pathfindingManager.PeekNextNode();
+        if (nextNode == null)
+        {
+            Logger.LogWarning("No next node found, can't move");
+            return;
+        }
+        if (_pathfindingManager.IsTargetNode(nextNode))
+        {
+            // If the knight is facing the target node, do not move
+            if (Vector3.Dot(transform.forward, nextNode.transform.position - transform.position) > 0.9f)
+                return;
+
+            move(transform.position, nextNode.transform.position);
+            return;
+        }
+
+        var nextPosition = _pathfindingManager.GetNextPosition();
+        UpdatePath();
+
+        move(nextPosition, _pathfindingManager.PeekNextPosition());
     }
 
     private void move(Vector3 nextPosition, Vector3 nextPrediction)

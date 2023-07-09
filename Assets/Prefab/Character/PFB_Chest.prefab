@@ -253,6 +253,7 @@ GameObject:
   - component: {fileID: 7347196903768541828}
   - component: {fileID: 6907605621707865251}
   - component: {fileID: 1735723544850361361}
+  - component: {fileID: 7888793794448872351}
   m_Layer: 0
   m_Name: PFB_Chest
   m_TagString: Player
@@ -546,6 +547,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.4
   m_Center: {x: 0, y: 0.25, z: 0}
+--- !u!114 &7888793794448872351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7019725412394063863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 538581017e013914d8c564716fd49e6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _chestController: {fileID: 7019725412394063862}
 --- !u!1001 &416438659985787581
 PrefabInstance:
   m_ObjectHideFlags: 0

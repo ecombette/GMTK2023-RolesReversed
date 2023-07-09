@@ -3621,6 +3621,14 @@ PrefabInstance:
       propertyPath: _duration
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2226637249862821794, guid: b2fd33160c1fc364a8aeb24e61cb64e1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.000022351742
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226637249862821794, guid: b2fd33160c1fc364a8aeb24e61cb64e1, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -424.99997
+      objectReference: {fileID: 0}
     - target: {fileID: 3508029976684014808, guid: b2fd33160c1fc364a8aeb24e61cb64e1, type: 3}
       propertyPath: m_Camera
       value: 
@@ -4072,8 +4080,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Thanks to BlueRaja for the help with High Speed Priority Queue for C#\n
-    \nMusic by https://www.bensound.com\r\nLicense code:05FTMJEJD1BNTACD\n"
+  m_text: 'Thanks to BlueRaja for the help with High Speed Priority Queue for C#
+
+
+    Music
+    by https://www.bensound.com
+
+    License code:05FTMJEJD1BNTACD
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dde1b265bf67f6744a359acf434ef9ba, type: 2}
   m_sharedMaterial: {fileID: 1143161495243258155, guid: dde1b265bf67f6744a359acf434ef9ba, type: 2}
